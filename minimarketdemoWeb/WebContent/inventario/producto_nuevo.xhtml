@@ -9,7 +9,7 @@
 		type="preRenderView"></f:event>
 </f:metadata>
 <h:head>
-	<title>Comidas</title>
+	<title>Productos</title>
 </h:head>
 <body>
 	<p:growl>
@@ -28,27 +28,43 @@
 			</f:facet>
 		</p:menubar>
 	</h:form>
-	<p:panel header ="Ingreso de nueva comida">
+	<p:panel header ="Ingreso de nuevo Producto">
 		<h:form>
 			<p:panelGrid columns="2">
-				<h:outputText value="Nombre Comida:" />
-				<p:inputText value="#{beanComida.nuevaComida.nombreComida }"
-					required="true" requiredMessage="Ingrese el nombre de la comida" />
-				<h:outputText value="Tipo de Comida:" />
-				<p:selectOneMenu value ="#{beanComida.idTipoComida}">
-					<f:selectItems value="#{beanComida.listaTipoComidas}" var="tc"
-						itemLabel="#{tc.nombreTipoComida}" itemValue="#{tc.idTipoComida}">
-					</f:selectItems>
-				</p:selectOneMenu>
-				<h:outputText value="Calorias:" />
-				<p:spinner value="#{beanComida.nuevaComida.caloriasComida}"
-				requiredMessage="Ingrese las calorias" />
+				<h:outputText value="Nombre del Producto:" />
+				<p:inputText value="#{beanInventario.nuevoProducto.proNombre}"
+					required="true" requiredMessage="Ingrese el nombre de del Producto" />
+					
+					<h:outputText value="Precio de Adquisicion del producto:" />
+				<p:spinner value="#{beanInventario.nuevoProducto.proPresioAd}"
+				requiredMessage="Ingrese el precio" />
 				<h:outputText value="Precio:" />
 					<p:spinner value="#{ beanComida.nuevaComida.precioComida}" stepFactor="0.50"
+						requiredMessage="Ingrese el precio"
 	 />
+	             <h:outputText value="Stock:" />
+					<p:spinner value="#{ beanInventario.nuevoProducto.stock}" 
+						requiredMessage="Ingrese el stock"
+	 />
+	 
+				<h:outputText value="Marca del Producto:" />
+				<p:selectOneMenu value ="#{beanInventario.idMarca}">
+					<f:selectItems value="#{beanInventario.listaMarcas}" var="m"
+						itemLabel="#{m.marcNombre}" itemValue="#{m.idMarca}">
+					</f:selectItems>
+						</p:selectOneMenu>
+					<h:outputText value="Distribuidor del Producto:" />
+				<p:selectOneMenu value ="#{beanInventario.idDistribuidor}">
+					<f:selectItems value="#{beanInventario.listaDistribuidor}" var="d"
+						itemLabel="#{d.nombreDist}" itemValue="#{d.idDistribuidor}">
+					</f:selectItems>
+					
+				</p:selectOneMenu>
+				  <h:outputText for="basic" value="Fecha de Compra del Producto"/>
+                <p:datePicker id="basic" value="#{beanInventario.nuevoProducto.proFechaCompra}" />
 				
-				<p:commandButton value="Guardar comida" icon="pi pi-save" update="@form"
-					actionListener="#{beanComida.actionListenerInsertarNuevaComida()}"></p:commandButton>
+				<p:commandButton value="Guardar Producto" icon="pi pi-save" update="@form"
+					actionListener="#{beanInventario.actionListenerInsertarNuevoProducto()}"></p:commandButton>
 			</p:panelGrid>
 		</h:form>
 	</p:panel>

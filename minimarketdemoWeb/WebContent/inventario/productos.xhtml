@@ -34,31 +34,39 @@
 		<h:form>
 			<p:dataTable value="#{beanInventario.listaProductos}" var="producto"
 				paginator="true" rows="5">
-				<p:column headerText="ID">
-					<h:outputText value="#{comida.idComida}" />
+				<p:column headerText="Codigo" filterBy="#{producto.codProducto}"
+					filterMatchMode="contains">
+					<h:outputText value="#{producto.codProducto}" />
 				</p:column>
 				
-				<p:column headerText="Nombre" filterBy="#{comida.nombreComida}"
+				<p:column headerText="Nombre" filterBy="#{producto.proNombre}"
 					filterMatchMode="contains">
-					<h:outputText value="#{comida.nombreComida}" />
-				</p:column>
-				<p:column headerText="TipoComida" filterBy="#{comida.tipoComida}"
-					filterMatchMode="contains">
-					<h:outputText value="#{comida.tipoComida.nombreTipoComida}" />
-				</p:column>
-				<p:column headerText="Calorias">
-					<h:outputText value="#{comida.caloriasComida}" />
-				</p:column>
+					<h:outputText value="#{producto.proNombre}" />
+				</p:column>				
 				<p:column headerText="Precio">
-					<h:outputText value="#{comida.precioComida}" />
+					<h:outputText value="#{producto.proPresio}" />
+				</p:column>
+				<p:column headerText="Stock">
+					<h:outputText value="#{producto.stock}" />
+				</p:column>
+					<p:column headerText="Fecha de Compra">
+					<h:outputText value="#{producto.proFechaCompra}" />
+				</p:column>
+						<p:column headerText="Marca"  filterBy="#{producto.marca.marcNombre}"
+					filterMatchMode="contains">
+					<h:outputText value="#{producto.marca.marcNombre}" />
+				</p:column>
+					<p:column headerText="Distribuidor"  filterBy="#{producto.distribuidore.nombreDist}"
+					filterMatchMode="contains">
+					<h:outputText value="#{producto.distribuidore.nombreDist}" />
 				</p:column>
 				<p:column headerText="OPCIONES">
 					
 					<p:commandButton icon="pi pi-pencil" title="editar"
-						action="#{beanComida.actionSeleccionarEdicionComida(comida)}" />
+						action="#{beanInventario.actionSeleccionarEdicionProducto(producto)}" />
 					<p:commandButton icon="pi pi-times-circle" title="eliminar"
 						styleClass="ui-button-danger" update="@form"
-						actionListener="#{beanComida.actionListenerEliminarComida(comida.idComida)}">
+						actionListener="#{beanInventario.actionListenerEliminarProducto(producto.codProducto}">
 						<p:confirm header="Confirmación"
 							message="Desea borrar esta comida?" icon="pi pi-info-circle" />
 					</p:commandButton>

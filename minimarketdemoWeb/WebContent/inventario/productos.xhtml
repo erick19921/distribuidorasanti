@@ -18,7 +18,7 @@
 	<h:form>
 		<p:menubar>
 			<p:menuitem value="Regresar" icon="pi pi-home" action="menu" />
-			<p:menuitem value="Nueva Producto" icon="pi pi-apple"
+			<p:menuitem value="Nuevo Producto" icon="pi pi-apple"
 				action="#{beanInventario.actionMenuNuevoProducto()}" />
 			<f:facet name="options">
 				<p:menuButton value="#{beanSegLogin.loginDTO.correo}"
@@ -66,7 +66,7 @@
 						action="#{beanInventario.actionSeleccionarEdicionProducto(producto)}" />
 					<p:commandButton icon="pi pi-times-circle" title="eliminar"
 						styleClass="ui-button-danger" update="@form"
-						actionListener="#{beanInventario.actionListenerEliminarProducto(producto.codProducto}">
+						actionListener="#{beanInventario.actionListenerEliminarProducto(producto.codProducto)}">
 						<p:confirm header="Confirmación"
 							message="Desea borrar esta comida?" icon="pi pi-info-circle" />
 					</p:commandButton>

@@ -1,5 +1,6 @@
 package minimarketdemo.controller.inventario;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -17,7 +18,7 @@ import minimarketdemo.model.inventario.managers.ManagerMarca;
 
 @Named
 @SessionScoped
-public class BeanInventario {
+public class BeanInventario implements Serializable {
 	@EJB
 	private ManagerInventario mProducto;
 	@EJB

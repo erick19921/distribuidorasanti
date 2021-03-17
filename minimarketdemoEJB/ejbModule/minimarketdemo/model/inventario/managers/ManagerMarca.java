@@ -24,7 +24,7 @@ ManagerDAO mDAO;
     
     //Tabla Marca
     public List<Marca> findAllMarca(){
- 	   return mDAO.findAll(Marca.class, "id_marca");
+ 	   return mDAO.findAll(Marca.class, "idMarca");
     }
     
     public void insertarMarca(Marca nuevaMarca) throws Exception{

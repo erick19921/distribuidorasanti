@@ -46,6 +46,9 @@
 				<p:column headerText="Precio">
 					<h:outputText value="#{producto.proPresio}" />
 				</p:column>
+				<p:column headerText="Precio de Adquisicion">
+					<h:outputText value="#{producto.proPresioAd}" />
+				</p:column>
 				<p:column headerText="Stock">
 					<h:outputText value="#{producto.stock}" />
 				</p:column>
@@ -68,7 +71,7 @@
 						styleClass="ui-button-danger" update="@form"
 						actionListener="#{beanInventario.actionListenerEliminarProducto(producto.codProducto)}">
 						<p:confirm header="Confirmación"
-							message="Desea borrar esta comida?" icon="pi pi-info-circle" />
+							message="Desea borrar este producto?" icon="pi pi-info-circle" />
 					</p:commandButton>
 				</p:column>
 			</p:dataTable>

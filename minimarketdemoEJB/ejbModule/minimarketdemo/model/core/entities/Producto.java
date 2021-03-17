@@ -27,8 +27,8 @@ public class Producto implements Serializable {
 	@Column(name="pro_nombre")
 	private String proNombre;
 
-	@Column(name="pro_precio")
-	private Boolean proPrecio;
+	@Column(name="pro_presio")
+	private double proPresio;
 
 	@Column(name="pro_presio_ad")
 	private double proPresioAd;
@@ -76,12 +76,12 @@ public class Producto implements Serializable {
 		this.proNombre = proNombre;
 	}
 
-	public Boolean getProPrecio() {
-		return this.proPrecio;
+	public double getProPresio() {
+		return this.proPresio;
 	}
 
-	public void setProPrecio(Boolean proPrecio) {
-		this.proPrecio = proPrecio;
+	public void setProPresio(double proPresio) {
+		this.proPresio = proPresio;
 	}
 
 	public double getProPresioAd() {

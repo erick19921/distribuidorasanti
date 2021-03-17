@@ -9,15 +9,15 @@
 		type="preRenderView"></f:event>
 </f:metadata>
 <h:head>
-	<title>Menú Inventario</title>
+	<title>Edicion Marca</title>
 </h:head>
 <body>
+	<p:growl>
+		<p:autoUpdate />
+	</p:growl>
 	<h:form>
 		<p:menubar>
-			<p:menuitem value="Regresar" icon="pi pi-home" action="/menu" />
-			<p:menuitem value="Productos" icon="pi pi-briefcase" action="#{beanInventario.actionMenuProductos()}" />
-			<p:menuitem value="Marca" icon="pi pi-step-globe" action="#{beanMarca.actionMenuMarca()}" />
-			<p:menuitem value="Distribuidores" icon="pi pi-book" action="#{beanDistribuidor.actionMenuDistribuidor()}"/>
+			<p:menuitem value="Regresar" icon="pi pi-home" action="marca" />
 			<f:facet name="options">
 				<p:menuButton value="#{beanSegLogin.loginDTO.correo}"
 					icon="pi pi-user">
@@ -27,8 +27,17 @@
 				</p:menuButton>
 			</f:facet>
 		</p:menubar>
-		<p:staticMessage severity="info" summary="Módulo de inventario"></p:staticMessage>
 	</h:form>
-	<div></div>
+	<p:panel>
+		<h:form>
+			<p:panelGrid columns="2">
+				<h:outputText value="Nombre Marca:" />
+				<p:inputText value="#{beanMarca.edicionMarca.marcNombre}"
+					required="true" requiredMessage="Ingrese el nombre de la marca" />
+				<p:commandButton value="Guardar" icon="pi pi-save" update="@form"
+					actionListener="#{beanMarca.actionListenerActualizarEdicionMarca()}"></p:commandButton>
+			</p:panelGrid>
+		</h:form>
+	</p:panel>
 </body>
 </html>

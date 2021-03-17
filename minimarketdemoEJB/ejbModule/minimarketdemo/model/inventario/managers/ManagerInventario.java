@@ -7,6 +7,7 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 
 import minimarketdemo.model.core.entities.Distribuidore;
+import minimarketdemo.model.core.entities.Marca;
 import minimarketdemo.model.core.managers.ManagerDAO;
 
 /**
@@ -29,4 +30,26 @@ ManagerDAO mDAO;
     	
     }
 
+    
+    
+    
+   public List<Marca> findAllMarca(){
+	   return mDAO.findAll(Marca.class, "id_marca");
+   }
+   
+   public Marca insertarMarca(String marc_nombre) throws Exception{
+	   Marca nueva = new Marca();
+	   nueva.setMarcNombre(marc_nombre);
+	   return nueva;
+   }
+   
+   public void actualizarMarca(Marca edicionMarca) throws Exception{
+	   Marca marca = (Marca) mDAO.findById(Marca.class, edicionMarca.getIdMarca());
+	   marca.setMarcNombre(edicionMarca.getMarcNombre());
+   }
+   
+   public void eliminarMarca(int idMarca) throws Exception{
+	   Marca marca = (Marca) mDAO.findById(Marca.class, idMarca);
+	   mDAO.eliminar(Marca.class, idMarca);
+   }
 }

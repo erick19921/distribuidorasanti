@@ -17,7 +17,7 @@
 	</p:growl>
 	<h:form>
 		<p:menubar>
-			<p:menuitem value="Regresar" icon="pi pi-home" action="comidas" />
+			<p:menuitem value="Regresar" icon="pi pi-home" action="productos" />
 			<f:facet name="options">
 				<p:menuButton value="#{beanSegLogin.loginDTO.correo}"
 					icon="pi pi-user">
@@ -36,10 +36,10 @@
 					required="true" requiredMessage="Ingrese el nombre de del Producto" />
 					
 					<h:outputText value="Precio de Adquisicion del producto:" />
-				<p:spinner value="#{beanInventario.nuevoProducto.proPresioAd}"
+				<p:spinner value="#{beanInventario.nuevoProducto.proPresioAd}" stepFactor="0.01"
 				requiredMessage="Ingrese el precio" />
 				<h:outputText value="Precio:" />
-					<p:spinner value="#{ beanComida.nuevaComida.precioComida}" stepFactor="0.50"
+					<p:spinner value="#{ beanInventario.nuevoProducto.proPresio}" stepFactor="0.01"
 						requiredMessage="Ingrese el precio"
 	 />
 	             <h:outputText value="Stock:" />

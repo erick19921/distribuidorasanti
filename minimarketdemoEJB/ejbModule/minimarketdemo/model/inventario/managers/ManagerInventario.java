@@ -41,7 +41,7 @@ ManagerDAO mDAO;
     	producto.setMarca(marca);
     	producto.setProNombre(edicionProducto.getProNombre());
     	producto.setProPresioAd(edicionProducto.getProPresioAd());
-    	producto.setProPrecio(edicionProducto.getProPrecio());
+    	producto.setProPresio(edicionProducto.getProPresio());
     	producto.setProFechaCompra(edicionProducto.getProFechaCompra());
     	producto.setStock(edicionProducto.getStock());
     	mDAO.actualizar(producto);

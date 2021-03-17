@@ -9,9 +9,6 @@
 		<class>minimarketdemo.model.core.entities.Distribuidore</class>
 		<class>minimarketdemo.model.core.entities.Factura</class>
 		<class>minimarketdemo.model.core.entities.Marca</class>
-		<class>minimarketdemo.model.core.entities.MreaAutomovil</class>
-		<class>minimarketdemo.model.core.entities.Pgw</class>
-		<class>minimarketdemo.model.core.entities.PgwTipopg</class>
 		<class>minimarketdemo.model.core.entities.Producto</class>
 		<class>minimarketdemo.model.core.entities.SegAsignacion</class>
 		<class>minimarketdemo.model.core.entities.SegModulo</class>

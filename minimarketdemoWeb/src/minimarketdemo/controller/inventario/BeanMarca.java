@@ -65,6 +65,18 @@ public class BeanMarca implements Serializable {
 		}
 	}
 	
+	public void actionListenerEliminarMarca(int idMarca) {
+		try {
+			managerMarca.eliminarMarca(idMarca);
+			listaMarca = managerMarca.findAllMarca();
+			JSFUtil.crearMensajeINFO("Marca eliminada");
+		} catch (Exception e) {
+			// TODO: handle exception
+			JSFUtil.crearMensajeERROR(e.getMessage());
+			e.printStackTrace();
+		}
+	}
+	
 	public List<Marca> getListaMarca() {
 		return listaMarca;
 	}

@@ -64,6 +64,18 @@ public class BeanDistribuidor {
 		}
 	}
 	
+	public void actionListenerEliminarDistribuidor(int idDistribuidor) {
+		try {
+			managerDistribuidor.eliminarDistribuidor(idDistribuidor);
+			listaDistribuidor = managerDistribuidor.findAllDistribuidores();
+			JSFUtil.crearMensajeINFO("Distribuidor eliminado");
+		} catch (Exception e) {
+			// TODO: handle exception
+			JSFUtil.crearMensajeERROR(e.getMessage());
+			e.printStackTrace();
+		}
+	}
+	
 	
 	public List<Distribuidore> getListaDistribuidor() {
 		return listaDistribuidor;

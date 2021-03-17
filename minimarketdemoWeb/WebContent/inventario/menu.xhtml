@@ -15,7 +15,7 @@
 	<h:form>
 		<p:menubar>
 			<p:menuitem value="Regresar" icon="pi pi-home" action="/menu" />
-			<p:menuitem value="Productos" icon="pi pi-briefcase" />
+			<p:menuitem value="Productos" icon="pi pi-briefcase" action="#{beanInventario.actionMenuProductos()}" />
 			<p:menuitem value="Marca" icon="pi pi-step-globe" action="#{beanMarca.actionMenuMarca()}" />
 			<p:menuitem value="Distribuidores" icon="pi pi-book" action="#{beanDistribuidor.actionMenuDistribuidor()}"/>
 			<f:facet name="options">

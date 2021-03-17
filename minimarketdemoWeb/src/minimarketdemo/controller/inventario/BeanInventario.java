@@ -90,5 +90,62 @@ public class BeanInventario {
 			e.printStackTrace();
 		}
 	}
+
+	public int getIdDistribuidor() {
+		return idDistribuidor;
+	}
+
+	public void setIdDistribuidor(int idDistribuidor) {
+		this.idDistribuidor = idDistribuidor;
+	}
+
+	public int getIdMarca() {
+		return idMarca;
+	}
+
+	public void setIdMarca(int idMarca) {
+		this.idMarca = idMarca;
+	}
+
+	public List<Producto> getListaProductos() {
+		return listaProductos;
+	}
+
+	public void setListaProductos(List<Producto> listaProductos) {
+		this.listaProductos = listaProductos;
+	}
+
+	public List<Marca> getListaMarcas() {
+		return listaMarcas;
+	}
+
+	public void setListaMarcas(List<Marca> listaMarcas) {
+		this.listaMarcas = listaMarcas;
+	}
+
+	public List<Distribuidore> getListaDistribuidor() {
+		return listaDistribuidor;
+	}
+
+	public void setListaDistribuidor(List<Distribuidore> listaDistribuidor) {
+		this.listaDistribuidor = listaDistribuidor;
+	}
+
+	public Producto getNuevoProducto() {
+		return nuevoProducto;
+	}
+
+	public void setNuevoProducto(Producto nuevoProducto) {
+		this.nuevoProducto = nuevoProducto;
+	}
+
+	public Producto getEdicionProducto() {
+		return edicionProducto;
+	}
+
+	public void setEdicionProducto(Producto edicionProducto) {
+		this.edicionProducto = edicionProducto;
+	}
+	
 	
 }

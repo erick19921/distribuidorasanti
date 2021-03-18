@@ -8,8 +8,7 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
 import minimarketdemo.controller.JSFUtil;
-import minimarketdemo.model.core.entities.Distribuidore;
-import minimarketdemo.model.core.entities.Marca;
+import minimarketdemo.model.core.entities.InvDistribuidore;
 import minimarketdemo.model.inventario.managers.ManagerDistribuidor;
 import minimarketdemo.model.inventario.managers.ManagerMarca;
 
@@ -18,9 +17,9 @@ import minimarketdemo.model.inventario.managers.ManagerMarca;
 public class BeanDistribuidor implements Serializable{
 	@EJB
 	private ManagerDistribuidor managerDistribuidor;
-	private List<Distribuidore> listaDistribuidor;
-	private Distribuidore nuevoDistribuidor;
-	private Distribuidore edicionDistribuidor;
+	private List<InvDistribuidore> listaDistribuidor;
+	private InvDistribuidore nuevoDistribuidor;
+	private InvDistribuidore edicionDistribuidor;
 
 	public BeanDistribuidor() {
 		// TODO Auto-generated constructor stub
@@ -32,7 +31,7 @@ public class BeanDistribuidor implements Serializable{
 	}
 	
 	public String actionMenuNuevoDistribuidor() {
-		nuevoDistribuidor = new Distribuidore();
+		nuevoDistribuidor = new InvDistribuidore();
 		return "distribuidor_nuevo";
 	}
 	
@@ -48,7 +47,7 @@ public class BeanDistribuidor implements Serializable{
 		}
 	}
 	
-	public String actionSeleccionarEdicionDistribuidor(Distribuidore distribuidor) {
+	public String actionSeleccionarEdicionDistribuidor(InvDistribuidore distribuidor) {
 		edicionDistribuidor = distribuidor;
 		return "distribuidor_edicion";
 	}
@@ -76,32 +75,32 @@ public class BeanDistribuidor implements Serializable{
 			e.printStackTrace();
 		}
 	}
-	
-	
-	public List<Distribuidore> getListaDistribuidor() {
+
+	public List<InvDistribuidore> getListaDistribuidor() {
 		return listaDistribuidor;
 	}
 
-	public void setListaDistribuidor(List<Distribuidore> listaDistribuidor) {
+	public void setListaDistribuidor(List<InvDistribuidore> listaDistribuidor) {
 		this.listaDistribuidor = listaDistribuidor;
 	}
 
-	public Distribuidore getNuevoDistribuidor() {
+	public InvDistribuidore getNuevoDistribuidor() {
 		return nuevoDistribuidor;
 	}
 
-	public void setNuevoDistribuidor(Distribuidore nuevoDistribuidor) {
+	public void setNuevoDistribuidor(InvDistribuidore nuevoDistribuidor) {
 		this.nuevoDistribuidor = nuevoDistribuidor;
 	}
 
-	public Distribuidore getEdicionDistribuidor() {
+	public InvDistribuidore getEdicionDistribuidor() {
 		return edicionDistribuidor;
 	}
 
-	public void setEdicionDistribuidor(Distribuidore edicionDistribuidor) {
+	public void setEdicionDistribuidor(InvDistribuidore edicionDistribuidor) {
 		this.edicionDistribuidor = edicionDistribuidor;
 	}
 	
+
 	
 	
 	

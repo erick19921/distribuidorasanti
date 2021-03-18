@@ -6,13 +6,13 @@ import java.util.List;
 
 
 /**
- * The persistent class for the distribuidores database table.
+ * The persistent class for the inv_distribuidores database table.
  * 
  */
 @Entity
-@Table(name="distribuidores")
-@NamedQuery(name="Distribuidore.findAll", query="SELECT d FROM Distribuidore d")
-public class Distribuidore implements Serializable {
+@Table(name="inv_distribuidores")
+@NamedQuery(name="InvDistribuidore.findAll", query="SELECT i FROM InvDistribuidore i")
+public class InvDistribuidore implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -29,11 +29,11 @@ public class Distribuidore implements Serializable {
 	@Column(name="telefono_dist")
 	private String telefonoDist;
 
-	//bi-directional many-to-one association to Producto
-	@OneToMany(mappedBy="distribuidore")
-	private List<Producto> productos;
+	//bi-directional many-to-one association to InvProducto
+	@OneToMany(mappedBy="invDistribuidore")
+	private List<InvProducto> invProductos;
 
-	public Distribuidore() {
+	public InvDistribuidore() {
 	}
 
 	public Integer getIdDistribuidor() {
@@ -68,26 +68,26 @@ public class Distribuidore implements Serializable {
 		this.telefonoDist = telefonoDist;
 	}
 
-	public List<Producto> getProductos() {
-		return this.productos;
+	public List<InvProducto> getInvProductos() {
+		return this.invProductos;
 	}
 
-	public void setProductos(List<Producto> productos) {
-		this.productos = productos;
+	public void setInvProductos(List<InvProducto> invProductos) {
+		this.invProductos = invProductos;
 	}
 
-	public Producto addProducto(Producto producto) {
-		getProductos().add(producto);
-		producto.setDistribuidore(this);
+	public InvProducto addInvProducto(InvProducto invProducto) {
+		getInvProductos().add(invProducto);
+		invProducto.setInvDistribuidore(this);
 
-		return producto;
+		return invProducto;
 	}
 
-	public Producto removeProducto(Producto producto) {
-		getProductos().remove(producto);
-		producto.setDistribuidore(null);
+	public InvProducto removeInvProducto(InvProducto invProducto) {
+		getInvProductos().remove(invProducto);
+		invProducto.setInvDistribuidore(null);
 
-		return producto;
+		return invProducto;
 	}
 
 }

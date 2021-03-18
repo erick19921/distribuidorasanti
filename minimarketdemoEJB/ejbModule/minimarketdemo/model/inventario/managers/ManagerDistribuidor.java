@@ -6,8 +6,9 @@ import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 
-import minimarketdemo.model.core.entities.Distribuidore;
-import minimarketdemo.model.core.entities.Marca;
+import minimarketdemo.model.core.entities.InvDistribuidore;
+import minimarketdemo.model.core.entities.InvDistribuidore;
+import minimarketdemo.model.core.entities.InvMarca;
 import minimarketdemo.model.core.managers.ManagerDAO;
 
 /**
@@ -23,16 +24,16 @@ ManagerDAO mDAO;
     }
     
   //Tabla Distribuidores
-    public List<Distribuidore> findAllDistribuidores(){
-    	return mDAO.findAll(Distribuidore.class, "nombreDist");
+    public List<InvDistribuidore> findAllDistribuidores(){
+    	return mDAO.findAll(InvDistribuidore.class, "nombreDist");
     }
     
-    public void insertarDistribuidor(Distribuidore nuevoDistribuidor) throws Exception {
+    public void insertarDistribuidor(InvDistribuidore nuevoDistribuidor) throws Exception {
     	mDAO.insertar(nuevoDistribuidor);
     }
 
-    public void actualizarDistribuidor(Distribuidore edicionDistribuidor) throws Exception{
-    	Distribuidore dist = (Distribuidore) mDAO.findById(Distribuidore.class, edicionDistribuidor.getIdDistribuidor());
+    public void actualizarDistribuidor(InvDistribuidore edicionDistribuidor) throws Exception{
+    	InvDistribuidore dist = (InvDistribuidore) mDAO.findById(InvDistribuidore.class, edicionDistribuidor.getIdDistribuidor());
     	dist.setNombreDist(edicionDistribuidor.getNombreDist());
     	dist.setTelefonoDist(edicionDistribuidor.getTelefonoDist());
     	dist.setDireccionDist(edicionDistribuidor.getDireccionDist());
@@ -40,7 +41,7 @@ ManagerDAO mDAO;
     }
     
     public void eliminarDistribuidor(int idDistribuidor) throws Exception{
-    	mDAO.eliminar(Distribuidore.class, idDistribuidor);
+    	mDAO.eliminar(InvDistribuidore.class, idDistribuidor);
     }
     
     

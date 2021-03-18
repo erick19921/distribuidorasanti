@@ -55,13 +55,13 @@
 					<p:column headerText="Fecha de Compra">
 					<h:outputText value="#{producto.proFechaCompra}" />
 				</p:column>
-						<p:column headerText="Marca"  filterBy="#{producto.marca.marcNombre}"
+						<p:column headerText="Marca"  filterBy="#{producto.invMarca.marcNombre}"
 					filterMatchMode="contains">
-					<h:outputText value="#{producto.marca.marcNombre}" />
+					<h:outputText value="#{producto.invMarca.marcNombre}" />
 				</p:column>
-					<p:column headerText="Distribuidor"  filterBy="#{producto.distribuidore.nombreDist}"
+					<p:column headerText="Distribuidor"  filterBy="#{producto.invDistribuidore.nombreDist}"
 					filterMatchMode="contains">
-					<h:outputText value="#{producto.distribuidore.nombreDist}" />
+					<h:outputText value="#{producto.invDistribuidore.nombreDist}" />
 				</p:column>
 				<p:column headerText="OPCIONES">
 					

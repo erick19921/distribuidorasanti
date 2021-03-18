@@ -7,12 +7,13 @@ import java.util.List;
 
 
 /**
- * The persistent class for the producto database table.
+ * The persistent class for the inv_producto database table.
  * 
  */
 @Entity
-@NamedQuery(name="Producto.findAll", query="SELECT p FROM Producto p")
-public class Producto implements Serializable {
+@Table(name="inv_producto")
+@NamedQuery(name="InvProducto.findAll", query="SELECT i FROM InvProducto i")
+public class InvProducto implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -35,21 +36,21 @@ public class Producto implements Serializable {
 
 	private Integer stock;
 
-	//bi-directional many-to-one association to DetalleFactura
-	@OneToMany(mappedBy="producto")
-	private List<DetalleFactura> detalleFacturas;
-
-	//bi-directional many-to-one association to Distribuidore
+	//bi-directional many-to-one association to InvDistribuidore
 	@ManyToOne
 	@JoinColumn(name="id_distribuidor")
-	private Distribuidore distribuidore;
+	private InvDistribuidore invDistribuidore;
 
-	//bi-directional many-to-one association to Marca
+	//bi-directional many-to-one association to InvMarca
 	@ManyToOne
 	@JoinColumn(name="id_marca")
-	private Marca marca;
+	private InvMarca invMarca;
 
-	public Producto() {
+	//bi-directional many-to-one association to VenDetalleVenta
+	@OneToMany(mappedBy="invProducto")
+	private List<VenDetalleVenta> venDetalleVentas;
+
+	public InvProducto() {
 	}
 
 	public Integer getCodProducto() {
@@ -100,42 +101,42 @@ public class Producto implements Serializable {
 		this.stock = stock;
 	}
 
-	public List<DetalleFactura> getDetalleFacturas() {
-		return this.detalleFacturas;
+	public InvDistribuidore getInvDistribuidore() {
+		return this.invDistribuidore;
 	}
 
-	public void setDetalleFacturas(List<DetalleFactura> detalleFacturas) {
-		this.detalleFacturas = detalleFacturas;
+	public void setInvDistribuidore(InvDistribuidore invDistribuidore) {
+		this.invDistribuidore = invDistribuidore;
 	}
 
-	public DetalleFactura addDetalleFactura(DetalleFactura detalleFactura) {
-		getDetalleFacturas().add(detalleFactura);
-		detalleFactura.setProducto(this);
-
-		return detalleFactura;
+	public InvMarca getInvMarca() {
+		return this.invMarca;
 	}
 
-	public DetalleFactura removeDetalleFactura(DetalleFactura detalleFactura) {
-		getDetalleFacturas().remove(detalleFactura);
-		detalleFactura.setProducto(null);
-
-		return detalleFactura;
+	public void setInvMarca(InvMarca invMarca) {
+		this.invMarca = invMarca;
 	}
 
-	public Distribuidore getDistribuidore() {
-		return this.distribuidore;
+	public List<VenDetalleVenta> getVenDetalleVentas() {
+		return this.venDetalleVentas;
 	}
 
-	public void setDistribuidore(Distribuidore distribuidore) {
-		this.distribuidore = distribuidore;
+	public void setVenDetalleVentas(List<VenDetalleVenta> venDetalleVentas) {
+		this.venDetalleVentas = venDetalleVentas;
 	}
 
-	public Marca getMarca() {
-		return this.marca;
+	public VenDetalleVenta addVenDetalleVenta(VenDetalleVenta venDetalleVenta) {
+		getVenDetalleVentas().add(venDetalleVenta);
+		venDetalleVenta.setInvProducto(this);
+
+		return venDetalleVenta;
 	}
 
-	public void setMarca(Marca marca) {
-		this.marca = marca;
+	public VenDetalleVenta removeVenDetalleVenta(VenDetalleVenta venDetalleVenta) {
+		getVenDetalleVentas().remove(venDetalleVenta);
+		venDetalleVenta.setInvProducto(null);
+
+		return venDetalleVenta;
 	}
 
 }

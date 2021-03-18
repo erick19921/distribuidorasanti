@@ -6,8 +6,7 @@ import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 
-import minimarketdemo.model.core.entities.Distribuidore;
-import minimarketdemo.model.core.entities.Marca;
+import minimarketdemo.model.core.entities.InvMarca;
 import minimarketdemo.model.core.managers.ManagerDAO;
 
 /**
@@ -23,22 +22,22 @@ ManagerDAO mDAO;
     }
     
     //Tabla Marca
-    public List<Marca> findAllMarca(){
- 	   return mDAO.findAll(Marca.class, "idMarca");
+    public List<InvMarca> findAllMarca(){
+ 	   return mDAO.findAll(InvMarca.class, "idMarca");
     }
     
-    public void insertarMarca(Marca nuevaMarca) throws Exception{
+    public void insertarMarca(InvMarca nuevaMarca) throws Exception{
  	   mDAO.insertar(nuevaMarca);
     }
     
-    public void actualizarMarca(Marca edicionMarca) throws Exception{
- 	   Marca marca = (Marca) mDAO.findById(Marca.class, edicionMarca.getIdMarca());
+    public void actualizarMarca(InvMarca edicionMarca) throws Exception{
+ 	   InvMarca marca = (InvMarca) mDAO.findById(InvMarca.class, edicionMarca.getIdMarca());
  	   marca.setMarcNombre(edicionMarca.getMarcNombre());
  	   mDAO.actualizar(marca);
     }
     
     public void eliminarMarca(int idMarca) throws Exception{
- 	   mDAO.eliminar(Marca.class, idMarca);
+ 	   mDAO.eliminar(InvMarca.class, idMarca);
     }
 
     

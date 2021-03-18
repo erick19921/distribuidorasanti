@@ -6,13 +6,13 @@ import java.util.List;
 
 
 /**
- * The persistent class for the clientes database table.
+ * The persistent class for the ven_clientes database table.
  * 
  */
 @Entity
-@Table(name="clientes")
-@NamedQuery(name="Cliente.findAll", query="SELECT c FROM Cliente c")
-public class Cliente implements Serializable {
+@Table(name="ven_clientes")
+@NamedQuery(name="VenCliente.findAll", query="SELECT v FROM VenCliente v")
+public class VenCliente implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -35,11 +35,11 @@ public class Cliente implements Serializable {
 	@Column(name="cli_telefono")
 	private String cliTelefono;
 
-	//bi-directional many-to-one association to Factura
-	@OneToMany(mappedBy="cliente")
-	private List<Factura> facturas;
+	//bi-directional many-to-one association to VenVenta
+	@OneToMany(mappedBy="venCliente")
+	private List<VenVenta> venVentas;
 
-	public Cliente() {
+	public VenCliente() {
 	}
 
 	public Integer getIdCliente() {
@@ -90,26 +90,26 @@ public class Cliente implements Serializable {
 		this.cliTelefono = cliTelefono;
 	}
 
-	public List<Factura> getFacturas() {
-		return this.facturas;
+	public List<VenVenta> getVenVentas() {
+		return this.venVentas;
 	}
 
-	public void setFacturas(List<Factura> facturas) {
-		this.facturas = facturas;
+	public void setVenVentas(List<VenVenta> venVentas) {
+		this.venVentas = venVentas;
 	}
 
-	public Factura addFactura(Factura factura) {
-		getFacturas().add(factura);
-		factura.setCliente(this);
+	public VenVenta addVenVenta(VenVenta venVenta) {
+		getVenVentas().add(venVenta);
+		venVenta.setVenCliente(this);
 
-		return factura;
+		return venVenta;
 	}
 
-	public Factura removeFactura(Factura factura) {
-		getFacturas().remove(factura);
-		factura.setCliente(null);
+	public VenVenta removeVenVenta(VenVenta venVenta) {
+		getVenVentas().remove(venVenta);
+		venVenta.setVenCliente(null);
 
-		return factura;
+		return venVenta;
 	}
 
 }

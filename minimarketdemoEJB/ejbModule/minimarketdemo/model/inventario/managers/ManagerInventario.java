@@ -6,9 +6,10 @@ import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 
-import minimarketdemo.model.core.entities.Distribuidore;
-import minimarketdemo.model.core.entities.Marca;
-import minimarketdemo.model.core.entities.Producto;
+import minimarketdemo.model.core.entities.InvDistribuidore;
+import minimarketdemo.model.core.entities.InvMarca;
+import minimarketdemo.model.core.entities.InvProducto;
+
 import minimarketdemo.model.core.managers.ManagerDAO;
 
 /**
@@ -23,22 +24,22 @@ ManagerDAO mDAO;
         
     }
  
-    public List<Producto> findAllProductos(){
-    	return mDAO.findAll(Producto.class, "proNombre");
+    public List<InvProducto> findAllProductos(){
+    	return mDAO.findAll(InvProducto.class, "proNombre");
     }
-    public void insertarProducto(Producto nuevoProducto, int idDistribuidor, int idMarca) throws Exception{
-    	Distribuidore distribuidor= (Distribuidore)mDAO.findById(Distribuidore.class, idDistribuidor);
-    	Marca marca =(Marca)mDAO.findById(Marca.class, idMarca);
-    	nuevoProducto.setMarca(marca);
-    	nuevoProducto.setDistribuidore(distribuidor);
+    public void insertarProducto(InvProducto nuevoProducto, int idDistribuidor, int idMarca) throws Exception{
+    	InvDistribuidore distribuidor= (InvDistribuidore)mDAO.findById(InvDistribuidore.class, idDistribuidor);
+    	InvMarca marca =(InvMarca)mDAO.findById(InvMarca.class, idMarca);
+    	nuevoProducto.setInvMarca(marca);
+    	nuevoProducto.setInvDistribuidore(distribuidor);
     	mDAO.insertar(nuevoProducto);
     }
-    public void actualizarProducto(Producto edicionProducto, int idDistribuidor, int idMarca)throws Exception {
-    	Distribuidore distribuidor= (Distribuidore)mDAO.findById(Distribuidore.class, idDistribuidor);
-    	Marca marca =(Marca)mDAO.findById(Marca.class, idMarca);
-    	Producto producto=(Producto)mDAO.findById(Producto.class, edicionProducto.getCodProducto());
-    	producto.setDistribuidore(distribuidor);
-    	producto.setMarca(marca);
+    public void actualizarProducto(InvProducto edicionProducto, int idDistribuidor, int idMarca)throws Exception {
+    	InvDistribuidore distribuidor= (InvDistribuidore)mDAO.findById(InvDistribuidore.class, idDistribuidor);
+    	InvMarca marca =(InvMarca)mDAO.findById(InvMarca.class, idMarca);
+    	InvProducto producto=(InvProducto)mDAO.findById(InvProducto.class, edicionProducto.getCodProducto());
+    	producto.setInvDistribuidore(distribuidor);
+    	producto.setInvMarca(marca);
     	producto.setProNombre(edicionProducto.getProNombre());
     	producto.setProPresioAd(edicionProducto.getProPresioAd());
     	producto.setProPresio(edicionProducto.getProPresio());
@@ -48,8 +49,8 @@ ManagerDAO mDAO;
     }
  
     public void eliminarProducto(int idProducto) throws Exception {
-    	Producto producto=(Producto)mDAO.findById(Producto.class,idProducto);
-    	mDAO.eliminar(Producto.class,producto.getCodProducto());
+    	InvProducto producto=(InvProducto)mDAO.findById(InvProducto.class,idProducto);
+    	mDAO.eliminar(InvProducto.class,producto.getCodProducto());
     }
     
 

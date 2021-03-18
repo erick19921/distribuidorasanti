@@ -46,7 +46,7 @@
 						 action="#{beanMarca.actionSeleccionarEdicionMarca(marca)}"/>
 					<p:commandButton icon="pi pi-times-circle" title="eliminar"
 						styleClass="ui-button-danger" update="@form"
-						actionListener="#{beanMarca.actionListenerEliminarMarca(marca.idSegMarca)}">
+						actionListener="#{beanMarca.actionListenerEliminarMarca(marca.idMarca)}">
 						<p:confirm header="Confirmación"
 							message="Desea borrar esta marca?" icon="pi pi-info-circle" />
 					</p:commandButton>

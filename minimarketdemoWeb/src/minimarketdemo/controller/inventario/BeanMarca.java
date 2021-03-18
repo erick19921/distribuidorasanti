@@ -8,7 +8,7 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
 import minimarketdemo.controller.JSFUtil;
-import minimarketdemo.model.core.entities.Marca;
+import minimarketdemo.model.core.entities.InvMarca;
 import minimarketdemo.model.inventario.managers.ManagerMarca;
 
 @Named
@@ -17,16 +17,16 @@ public class BeanMarca implements Serializable {
 
 	@EJB
 	private ManagerMarca managerMarca;
-	private List<Marca> listaMarca;
-	private Marca nuevaMarca;
-	private Marca edicionMarca;
+	private List<InvMarca> listaMarca;
+	private InvMarca nuevaMarca;
+	private InvMarca edicionMarca;
 	
 	public BeanMarca() {
 		// TODO Auto-generated constructor stub
 	}
 	
 	public String actionMenuNuevaMarca() {
-		nuevaMarca = new Marca();
+		nuevaMarca = new InvMarca();
 		return "marca_nueva";
 	}
 	
@@ -39,7 +39,7 @@ public class BeanMarca implements Serializable {
 		try {
 			managerMarca.insertarMarca(nuevaMarca);
 			listaMarca = managerMarca.findAllMarca();
-			nuevaMarca = new Marca();
+			nuevaMarca = new InvMarca();
 			JSFUtil.crearMensajeINFO("Marca Creada");
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -48,7 +48,7 @@ public class BeanMarca implements Serializable {
 		}
 	}
 
-	public String actionSeleccionarEdicionMarca(Marca marca) {
+	public String actionSeleccionarEdicionMarca(InvMarca marca) {
 		edicionMarca = marca;
 		return "marca_edicion";
 	}
@@ -76,31 +76,32 @@ public class BeanMarca implements Serializable {
 			e.printStackTrace();
 		}
 	}
-	
-	public List<Marca> getListaMarca() {
-		return listaMarca;
-	}
 
-	public void setListaMarca(List<Marca> listaMarca) {
-		this.listaMarca = listaMarca;
-	}
-
-	public Marca getNuevaMarca() {
+	public InvMarca getNuevaMarca() {
 		return nuevaMarca;
 	}
 
-	public void setNuevaMarca(Marca nuevaMarca) {
+	public void setNuevaMarca(InvMarca nuevaMarca) {
 		this.nuevaMarca = nuevaMarca;
 	}
 
-	public Marca getEdicionMarca() {
+	public List<InvMarca> getListaMarca() {
+		return listaMarca;
+	}
+
+	public void setListaMarca(List<InvMarca> listaMarca) {
+		this.listaMarca = listaMarca;
+	}
+
+	public InvMarca getEdicionMarca() {
 		return edicionMarca;
 	}
 
-	public void setEdicionMarca(Marca edicionMarca) {
+	public void setEdicionMarca(InvMarca edicionMarca) {
 		this.edicionMarca = edicionMarca;
 	}
 	
+
 
 	
 }

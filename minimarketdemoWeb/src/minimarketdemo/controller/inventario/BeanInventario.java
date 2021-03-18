@@ -9,9 +9,9 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
 import minimarketdemo.controller.JSFUtil;
-import minimarketdemo.model.core.entities.Distribuidore;
-import minimarketdemo.model.core.entities.Marca;
-import minimarketdemo.model.core.entities.Producto;
+import minimarketdemo.model.core.entities.InvDistribuidore;
+import minimarketdemo.model.core.entities.InvMarca;
+import minimarketdemo.model.core.entities.InvProducto;
 import minimarketdemo.model.inventario.managers.ManagerDistribuidor;
 import minimarketdemo.model.inventario.managers.ManagerInventario;
 import minimarketdemo.model.inventario.managers.ManagerMarca;
@@ -27,11 +27,11 @@ public class BeanInventario implements Serializable {
 	private ManagerMarca mMarca;
 	private int idDistribuidor;
 	private int idMarca;
-	private List<Producto> listaProductos;
-	private List<Marca> listaMarcas;
-	private List<Distribuidore> listaDistribuidor;
-	private Producto nuevoProducto;
-	private Producto edicionProducto;
+	private List<InvProducto> listaProductos;
+	private List<InvMarca> listaMarcas;
+	private List<InvDistribuidore> listaDistribuidor;
+	private InvProducto nuevoProducto;
+	private InvProducto edicionProducto;
 	
 	public BeanInventario() {
 
@@ -45,7 +45,7 @@ public class BeanInventario implements Serializable {
 	
 	
 	public String actionMenuNuevoProducto() {
-		nuevoProducto=new Producto();
+		nuevoProducto=new InvProducto();
 		listaMarcas=mMarca.findAllMarca();
 		listaDistribuidor=mDistribuidor.findAllDistribuidores();
 
@@ -56,7 +56,7 @@ public class BeanInventario implements Serializable {
 		try {
 			mProducto.insertarProducto(nuevoProducto, idDistribuidor, idMarca);
 			listaProductos=mProducto.findAllProductos();
-			nuevoProducto=new Producto();
+			nuevoProducto=new InvProducto();
 			JSFUtil.crearMensajeINFO("Producto Ingresado Exitosamente.");
 		} catch (Exception e) {
 			JSFUtil.crearMensajeERROR(e.getMessage());
@@ -64,7 +64,7 @@ public class BeanInventario implements Serializable {
 		}
 	}
 	
-	public String actionSeleccionarEdicionProducto(Producto producto) {
+	public String actionSeleccionarEdicionProducto(InvProducto producto) {
 		edicionProducto=producto;
 		return "producto_edicion";
 	}
@@ -108,45 +108,46 @@ public class BeanInventario implements Serializable {
 		this.idMarca = idMarca;
 	}
 
-	public List<Producto> getListaProductos() {
+	public List<InvProducto> getListaProductos() {
 		return listaProductos;
 	}
 
-	public void setListaProductos(List<Producto> listaProductos) {
+	public void setListaProductos(List<InvProducto> listaProductos) {
 		this.listaProductos = listaProductos;
 	}
 
-	public List<Marca> getListaMarcas() {
+	public List<InvMarca> getListaMarcas() {
 		return listaMarcas;
 	}
 
-	public void setListaMarcas(List<Marca> listaMarcas) {
+	public void setListaMarcas(List<InvMarca> listaMarcas) {
 		this.listaMarcas = listaMarcas;
 	}
 
-	public List<Distribuidore> getListaDistribuidor() {
+	public List<InvDistribuidore> getListaDistribuidor() {
 		return listaDistribuidor;
 	}
 
-	public void setListaDistribuidor(List<Distribuidore> listaDistribuidor) {
+	public void setListaDistribuidor(List<InvDistribuidore> listaDistribuidor) {
 		this.listaDistribuidor = listaDistribuidor;
 	}
 
-	public Producto getNuevoProducto() {
+	public InvProducto getNuevoProducto() {
 		return nuevoProducto;
 	}
 
-	public void setNuevoProducto(Producto nuevoProducto) {
+	public void setNuevoProducto(InvProducto nuevoProducto) {
 		this.nuevoProducto = nuevoProducto;
 	}
 
-	public Producto getEdicionProducto() {
+	public InvProducto getEdicionProducto() {
 		return edicionProducto;
 	}
 
-	public void setEdicionProducto(Producto edicionProducto) {
+	public void setEdicionProducto(InvProducto edicionProducto) {
 		this.edicionProducto = edicionProducto;
 	}
+
 	
 	
 }

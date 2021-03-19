@@ -17,7 +17,7 @@
 			<p:menuitem value="Regresar" icon="pi pi-home" action="/menu" />
 			<p:menuitem value="Clientes" icon="pi pi-fa-group" action="#{beanVenClientes.actionMenuCliente()}"/>
 			<p:menuitem value="Ventas" icon="pi pi-fa-cart-plus" />
-			<p:menuitem value="Distribuidores" icon="pi pi-book" action="#{beanDistribuidor.actionMenuDistribuidor()}"/>
+			
 			<f:facet name="options">
 				<p:menuButton value="#{beanSegLogin.loginDTO.correo}"
 					icon="pi pi-user">
@@ -27,7 +27,7 @@
 				</p:menuButton>
 			</f:facet>
 		</p:menubar>
-		<p:staticMessage severity="info" summary="Módulo de inventario"></p:staticMessage>
+		<p:staticMessage severity="info" summary="Módulo de Ventas"></p:staticMessage>
 	</h:form>
 	<div></div>
 </body>

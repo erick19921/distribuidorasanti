@@ -9,7 +9,7 @@
 		type="preRenderView"></f:event>
 </f:metadata>
 <h:head>
-	<title>Edición Distribuidor</title>
+	<title>Edición Cliente</title>
 </h:head>
 <body>
 	<p:growl>
@@ -17,7 +17,7 @@
 	</p:growl>
 	<h:form>
 		<p:menubar>
-			<p:menuitem value="Regresar" icon="pi pi-home" action="distribuidores" />
+			<p:menuitem value="Regresar" icon="pi pi-home" action="clientes" />
 			<f:facet name="options">
 				<p:menuButton value="#{beanSegLogin.loginDTO.correo}"
 					icon="pi pi-user">
@@ -31,17 +31,24 @@
 	<p:panel>
 		<h:form>
 			<p:panelGrid columns="2">
-				<h:outputText value="Nombre Distribuidor:" />
-				<p:inputText value="#{beanDistribuidor.edicionDistribuidor.nombreDist}"
-					required="true" requiredMessage="Ingrese el nombre del Distribuidor" />
-				<h:outputText value="Teléfono Distribuidor:" />
-				<p:inputText value="#{beanDistribuidor.edicionDistribuidor.telefonoDist}"
-					required="true" requiredMessage="Ingrese el teléfono del Distribuidor" />
-				<h:outputText value="Dirección Distribuidor:" />
-				<p:inputText value="#{beanDistribuidor.edicionDistribuidor.direccionDist}"
-					required="true" requiredMessage="Ingrese la dirección del Distribuidor" />
+				<h:outputText value="Cédula:" />
+				<p:inputText value="#{beanVenClientes.edicionCliente.cliCedula}"
+					required="true" requiredMessage="Actualice la cedula de identidad" />
+					<h:outputText value="Nombre:" />
+				<p:inputText value="#{beanVenClientes.edicionCliente.cliNombre}"
+					required="true" requiredMessage="Actualice el nombre" />
+					<h:outputText value="Apellido:" />
+				<p:inputText value="#{beanVenClientes.edicionCliente.cliApellido}"
+					required="true" requiredMessage="Actualice el apelido" />
+					<h:outputText value="Dirección:" />
+				<p:inputText value="#{beanVenClientes.edicionCliente.cliDireccion}"
+					required="true" requiredMessage="Actualice la direcion " />
+					<h:outputText value="Télefono:" />
+				<p:inputText value="#{beanVenClientes.edicionCliente.cliTelefono}"
+					required="true" requiredMessage="Actualice el teléfono" />
+				
 				<p:commandButton value="Guardar" icon="pi pi-save" update="@form"
-					actionListener="#{beanDistribuidor.actionListenerActualizarEdicionDistribuidor()}"></p:commandButton>
+					actionListener="#{beanVenClientes.actionListenerActualizarEdicionCliente()}"></p:commandButton>
 			</p:panelGrid>
 		</h:form>
 	</p:panel>

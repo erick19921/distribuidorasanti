@@ -3,7 +3,6 @@
 	<persistence-unit name="sjhuertasmDS" transaction-type="JTA">
 		<jta-data-source>java:/sjhuertasmDS</jta-data-source>
 		<class>minimarketdemo.model.core.entities.AudBitacora</class>
-		<class>minimarketdemo.model.core.entities.ContContabilidad</class>
 		<class>minimarketdemo.model.core.entities.InvDistribuidore</class>
 		<class>minimarketdemo.model.core.entities.InvMarca</class>
 		<class>minimarketdemo.model.core.entities.InvProducto</class>
@@ -17,5 +16,6 @@
 		<class>minimarketdemo.model.core.entities.VenCliente</class>
 		<class>minimarketdemo.model.core.entities.VenDetalleVenta</class>
 		<class>minimarketdemo.model.core.entities.VenVenta</class>
+		<class>minimarketdemo.model.core.entities.RegRegistro</class>
 	</persistence-unit>
 </persistence>

@@ -6,13 +6,13 @@ import java.util.Date;
 
 
 /**
- * The persistent class for the cont_contabilidad database table.
+ * The persistent class for the reg_registros database table.
  * 
  */
 @Entity
-@Table(name="cont_contabilidad")
-@NamedQuery(name="ContContabilidad.findAll", query="SELECT c FROM ContContabilidad c")
-public class ContContabilidad implements Serializable {
+@Table(name="reg_registros")
+@NamedQuery(name="RegRegistro.findAll", query="SELECT r FROM RegRegistro r")
+public class RegRegistro implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -33,7 +33,7 @@ public class ContContabilidad implements Serializable {
 	@Column(name="total_inout")
 	private double totalInout;
 
-	public ContContabilidad() {
+	public RegRegistro() {
 	}
 
 	public Integer getIdContabilidad() {

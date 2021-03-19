@@ -17,7 +17,7 @@
 	</p:growl>
 	<h:form>
 		<p:menubar>
-			<p:menuitem value="Regresar" icon="pi pi-home" action="distribuidores" />
+			<p:menuitem value="Regresar" icon="pi pi-home" action="clientes" />
 			<f:facet name="options">
 				<p:menuButton value="#{beanSegLogin.loginDTO.correo}"
 					icon="pi pi-user">
@@ -31,17 +31,23 @@
 	<p:panel>
 		<h:form>
 			<p:panelGrid columns="2">
-				<h:outputText value="Nombre Distribuidor:" />
-				<p:inputText value="#{beanDistribuidor.nuevoDistribuidor.nombreDist}"
-					required="true" requiredMessage="Ingrese el nombre del Distribuidor" />
-				<h:outputText value="Teléfono Distribuidor:" />
-				<p:inputText value="#{beanDistribuidor.nuevoDistribuidor.telefonoDist}"
-					required="true" requiredMessage="Ingrese el teléfono del Distribuidor" />
-				<h:outputText value="Dirección Distribuidor:" />
-				<p:inputText value="#{beanDistribuidor.nuevoDistribuidor.direccionDist}"
-					required="true" requiredMessage="Ingrese la dirección del Distribuidor" />
+				<h:outputText value="Cédula:" />
+				<p:inputText value="#{beanVenClientes.nuevoCliente.cliCedula}"
+					required="true" requiredMessage="Ingrese la cedula" />
+					<h:outputText value="Cédula:" />
+				<p:inputText value="#{beanVenClientes.nuevoCliente.cliNombre}"
+					required="true" requiredMessage="Ingrese un nombre" />
+					<h:outputText value="Cédula:" />
+				<p:inputText value="#{beanVenClientes.nuevoCliente.cliApellido}"
+					required="true" requiredMessage="Ingrese un apellido" />
+				<h:outputText value="Dirección:" />
+				<p:inputText value="#{beanVenClientes.nuevoCliente.cliDireccion}"
+					required="true" requiredMessage="Ingrese una dirección" />
+				<h:outputText value="Teléfono/Celular" />
+				<p:inputText value="#{beanVenClientes.nuevoCliente.cliTelefono}"
+					required="true" requiredMessage="Ingrese un telefono valido" />
 				<p:commandButton value="Guardar" icon="pi pi-save" update="@form"
-					actionListener="#{beanDistribuidor.actionListenerInsertarNuevoDistribuidor()}"></p:commandButton>
+					actionListener="#{beanVenClientes.actionListenerInsertarNuevoCliente()}"></p:commandButton>
 			</p:panelGrid>
 		</h:form>
 	</p:panel>

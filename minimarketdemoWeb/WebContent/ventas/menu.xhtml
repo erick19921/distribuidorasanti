@@ -9,14 +9,14 @@
 		type="preRenderView"></f:event>
 </f:metadata>
 <h:head>
-	<title>Menú Inventario</title>
+	<title>Menú Ventas</title>
 </h:head>
 <body>
 	<h:form>
 		<p:menubar>
 			<p:menuitem value="Regresar" icon="pi pi-home" action="/menu" />
-			<p:menuitem value="Productos" icon="pi pi-briefcase" action="#{beanInventario.actionMenuProductos()}"/>
-			<p:menuitem value="Marca" icon="pi pi-globe" action="#{beanMarca.actionMenuMarca()}" />
+			<p:menuitem value="Clientes" icon="pi pi-fa-group" action="#{beanVenClientes.actionMenuCliente()}"/>
+			<p:menuitem value="Ventas" icon="pi pi-fa-cart-plus" />
 			<p:menuitem value="Distribuidores" icon="pi pi-book" action="#{beanDistribuidor.actionMenuDistribuidor()}"/>
 			<f:facet name="options">
 				<p:menuButton value="#{beanSegLogin.loginDTO.correo}"

@@ -31,12 +31,12 @@ public class BeanVenClientes implements Serializable {
 	
 	public String actionMenuNuevoCliente() {
 		nuevoCliente = new VenCliente();
-		return "clientes_nuevo";
+		return "cliente_nuevo";
 	}
 	
 	public String actionSeleccionarEdicionCliente(VenCliente cliente) {
 		edicionCliente = cliente;
-		return "clientes_edicion";
+		return "cliente_edicion";
 	}
 	//Codigo de ejecucion para las vistas
 	public void actionListenerInsertarNuevoCliente() {

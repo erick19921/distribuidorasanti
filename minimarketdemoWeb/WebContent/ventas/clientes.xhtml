@@ -14,7 +14,7 @@
 <body>
 <div align="center">
 <p:panel>
-	<p:staticMessage severity="info" summary="Agregar clientes nuevos" style="width: 100%" />
+	<p:staticMessage severity="info" summary="Lista de clientes refgistrados" style="width: 100%" />
 		</p:panel>
 	</div>
 	<p:growl>
@@ -39,13 +39,14 @@
 		<h:form>
 			<p:dataTable value="#{beanVenClientes.listaVenClientes}" var="c"
 				paginator="true" rows="5">
-				<p:column headerText="ID">
+				<p:column headerText="ID" filterBy="#{c.cliCedula}"
+					filterMatchMode="contains">
 					<h:outputText value="#{c.cliCedula}" />
 				</p:column>
-				<p:column headerText="NOMBRE">
+				<p:column headerText="NOMBRE" filterBy="#{c.cliNombre}"
+					filterMatchMode="contains">
 					<h:outputText value="#{c.cliNombre}" />
-				</p:column>
-				<p:column headerText="APELLIDO">
+					<b></b>
 					<h:outputText value="#{c.cliApellido}" />
 				</p:column>
 				<p:column headerText="DIRECCIÓN">

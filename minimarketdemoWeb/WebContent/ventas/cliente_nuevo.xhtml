@@ -9,12 +9,19 @@
 		type="preRenderView"></f:event>
 </f:metadata>
 <h:head>
-	<title>Nuevo Distribuidor</title>
+	<title>Nuevo Cliente</title>
 </h:head>
 <body>
+
+<div align="center">
+<p:panel>
+	<p:staticMessage severity="info" summary="Registro clientes nuevos" style="width: 100%" />
+		</p:panel>
+	</div>
 	<p:growl>
 		<p:autoUpdate />
 	</p:growl>
+	
 	<h:form>
 		<p:menubar>
 			<p:menuitem value="Regresar" icon="pi pi-home" action="clientes" />
@@ -28,6 +35,7 @@
 			</f:facet>
 		</p:menubar>
 	</h:form>
+	<div align="center">
 	<p:panel>
 		<h:form>
 			<p:panelGrid columns="2">
@@ -50,6 +58,8 @@
 					actionListener="#{beanVenClientes.actionListenerInsertarNuevoCliente()}"></p:commandButton>
 			</p:panelGrid>
 		</h:form>
+		
 	</p:panel>
+	</div>
 </body>
 </html>

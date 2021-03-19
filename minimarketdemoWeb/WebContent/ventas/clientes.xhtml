@@ -19,7 +19,7 @@
 		<p:menubar>
 			<p:menuitem value="Regresar" icon="pi pi-home" action="menu" />
 			<p:menuitem value="Nuevo Cliente" icon="pi pi-user-plus"
-				action="#{beanDistribuidor.actionMenuNuevoDistribuidor()}"/>
+				action="#{beanVenClientes.actionListenerInsertarNuevoCliente()}"/>
 			<f:facet name="options">
 				<p:menuButton value="#{beanSegLogin.loginDTO.correo}"
 					icon="pi pi-user">
@@ -32,27 +32,30 @@
 	</h:form>
 	<p:panel>
 		<h:form>
-			<p:dataTable value="#{beanDistribuidor.listaDistribuidor}" var="distribuidor"
+			<p:dataTable value="#{beanVenClientes.listaVenClientes}" var="c"
 				paginator="true" rows="5">
 				<p:column headerText="ID">
-					<h:outputText value="#{distribuidor.idDistribuidor}" />
+					<h:outputText value="#{c.cliCedula}" />
 				</p:column>
-				<p:column headerText="NOMBRE DISTRIBUIDOR">
-					<h:outputText value="#{distribuidor.nombreDist}" />
+				<p:column headerText="NOMBRE">
+					<h:outputText value="#{c.cliNombre}" />
 				</p:column>
-				<p:column headerText="TELÉFONO DISTRIBUIDOR">
-					<h:outputText value="#{distribuidor.telefonoDist}" />
+				<p:column headerText="APELLIDO">
+					<h:outputText value="#{c.cliApellido}" />
 				</p:column>
-				<p:column headerText="DIRECCIÓN DISTRIBUIDOR">
-					<h:outputText value="#{distribuidor.direccionDist}" />
+				<p:column headerText="DIRECCIÓN">
+					<h:outputText value="#{c.cliDireccion}" />
+				</p:column>
+				<p:column headerText="TELÉFONO">
+					<h:outputText value="#{c.cliTelefono}" />
 				</p:column>
 				<p:column headerText="OPCIONES">
 					
 					<p:commandButton icon="pi pi-pencil" title="editar"
-						 action="#{beanDistribuidor.actionSeleccionarEdicionDistribuidor(distribuidor)}"/>
+						 action="#{beanVenClientes.actionSeleccionarEdicionCliente(c)}"/>
 					<p:commandButton icon="pi pi-times-circle" title="eliminar"
 						styleClass="ui-button-danger" update="@form"
-						actionListener="#{beanDistribuidor.actionListenerEliminarDistribuidor(distribuidor.idDistribuidor)}">
+						actionListener="#{beanVenClientes.actionListenerEliminarCliente(c.idCliente)}">
 						<p:confirm header="Confirmación"
 							message="Desea borrar este Distribuidor" icon="pi pi-info-circle" />
 					</p:commandButton>

@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<f:metadata>
+	<f:event listener="#{beanSegLogin.actionVerificarLogin()}"
+		type="preRenderView"></f:event>
+</f:metadata>
+<h:head>
+	<title>Ventas de Productos </title>
+</h:head>
+<body>
+<div align="center">
+<p:panel>
+	<p:staticMessage severity="info" summary="Lista de productos " style="width: 100%" />
+		</p:panel>
+	</div>
+	<p:growl>
+		<p:autoUpdate />
+	</p:growl>
+	<h:form>
+		<p:menubar>
+			<p:menuitem value="Regresar" icon="pi pi-home" action="menu" />
+			<f:facet name="options">
+				<p:menuButton value="#{beanSegLogin.loginDTO.correo}"
+					icon="pi pi-user">
+					<p:menuitem value="Perfil" icon="pi pi-cog"></p:menuitem>
+					<p:menuitem value="Cerrar sesión" icon="pi pi-sign-out"
+						action="#{beanSegLogin.actionCerrarSesion()}"></p:menuitem>
+				</p:menuButton>
+			</f:facet>
+		</p:menubar>
+	</h:form>
+	<p:panel>
+		<h:form>
+			<p:dataTable value="#{controllerCarrito.listado}" var="p"
+				paginator="true" rows="5">
+				<p:column headerText="Codigo " filterBy="#{p.codProducto}"
+					filterMatchMode="contains">
+					<h:outputText value="#{p.codProducto}" />
+				</p:column>
+				<p:column headerText="Nombre" filterBy="#{p.proNombre}"
+					filterMatchMode="contains">
+						<h:outputText value="#{p.proNombre}" />
+				</p:column>
+				<p:column headerText="Marca">
+					<h:outputText value="#{p.marcaNombre}" />
+						<h:outputText value="#{p.marcaNombre}" />
+				</p:column>
+				<p:column headerText="Precio">
+					<h:outputText value="#{p.proPresio}" />
+						<h:outputText value="#{p.proPresio}" />
+				</p:column>
+					<p:column headerText="Stock">
+					<h:outputText value="#{p.stock}" />
+						<h:outputText value="#{p.stock}" />
+				</p:column>
+				<p:column headerText="OPCIONES">
+					
+					<p:commandButton icon="pi pi-pencil" title="editar"/>
+
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</p:panel>
+	<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"
+		responsive="true" width="350">
+		<p:commandButton value="No" type="button"
+			styleClass="ui-confirmdialog-no ui-button-flat" />
+		<p:commandButton value="Sí" type="button"
+			styleClass="ui-confirmdialog-yes" />
+	</p:confirmDialog>
+</body>
+</html>

@@ -33,37 +33,24 @@
 			</f:facet>
 		</p:menubar>
 	</h:form>
-	<p:panel>
-		<h:form>
-			<p:dataTable value="#{controllerCarrito.listado}" var="p"
-				paginator="true" rows="5">
-				<p:column headerText="Codigo " filterBy="#{p.codProducto}"
-					filterMatchMode="contains">
-					<h:outputText value="#{p.codProducto}" />
-				</p:column>
-				<p:column headerText="Nombre" filterBy="#{p.proNombre}"
-					filterMatchMode="contains">
-						<h:outputText value="#{p.proNombre}" />
-				</p:column>
-				<p:column headerText="Marca">
-					<h:outputText value="#{p.marcaNombre}" />
-						<h:outputText value="#{p.marcaNombre}" />
-				</p:column>
-				<p:column headerText="Precio">
-					<h:outputText value="#{p.proPresio}" />
-						<h:outputText value="#{p.proPresio}" />
-				</p:column>
-					<p:column headerText="Stock">
-					<h:outputText value="#{p.stock}" />
-						<h:outputText value="#{p.stock}" />
-				</p:column>
-				<p:column headerText="OPCIONES">
-					
-					<p:commandButton icon="pi pi-pencil" title="editar"/>
-
-				</p:column>
-			</p:dataTable>
-		</h:form>
+	<p:panel header="Producto">
+	<p:dataGrid value="#{controllerCarrito.listado}" var="p">
+	<p:panel header="Producto">
+	<h:panelGrid columns="2">
+	        <h:outputText value="Codigo: " />
+	        <h:outputText value="#{p.codProducto}" />
+	        <h:outputText value="Nombre: " />
+            <h:outputText value="#{p.proNombre}" />
+            <h:outputText value="Marca: " />
+			<h:outputText value="#{p.marcaNombre}" />
+			<h:outputText value="Precio: " />
+			<h:outputText value="#{p.proPresio}" />
+			<h:outputText value="Stock: " />
+			<h:outputText value="#{p.stock}" />
+			
+	</h:panelGrid>
+	</p:panel>
+	</p:dataGrid>
 	</p:panel>
 	<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"
 		responsive="true" width="350">

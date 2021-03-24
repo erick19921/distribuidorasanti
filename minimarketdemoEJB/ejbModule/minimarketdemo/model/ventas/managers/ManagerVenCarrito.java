@@ -73,6 +73,16 @@ private int posicion;
 		return listadoBusqueda;
 	}
 	
+	public List<ProductoDto> findProductoDtobyMarca(List<ProductoDto> listado, String nombreMarca) {
+		List<ProductoDto> listadoBusqueda = new ArrayList<ProductoDto>();
+		for (int i = 0; i < listado.size(); i++) {
+			if (nombreMarca.equals(listado.get(i).getMarcaNombre())) {
+				posicion=i;
+				listadoBusqueda.add(listado.get(i));
+			}
+		}
+		return listadoBusqueda;
+	}
 	
 	
     public void eliminarProducto(int codProducto,List<ProductoDto> lista,List<ProductoDto> carrito) throws Exception{

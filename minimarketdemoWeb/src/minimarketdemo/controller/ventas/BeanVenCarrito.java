@@ -25,6 +25,7 @@ public class BeanVenCarrito implements Serializable {
     private ProductoDto editarproducto;
     private int cantidad;
     private String nombreProducto;
+    private String nombreMarca;
 
 	@PostConstruct
 	public void inicializar() {
@@ -71,7 +72,7 @@ public class BeanVenCarrito implements Serializable {
 	 
 	 
 	 
-	 public void actionListenerBuscarProducto() {
+	 public void actionListenerBuscarProductoByNombre() {
 			try {
 				System.out.println("Nombre producto ingresado "+nombreProducto );
 				listado =listadoRespaldo;
@@ -89,7 +90,23 @@ public class BeanVenCarrito implements Serializable {
 			}
 		}
 	 
-	 
+	 public void actionListenerBuscarProductobyMarca() {
+			try {
+				System.out.println("Nombre producto ingresado "+nombreMarca );
+				listado =listadoRespaldo;
+				if(nombreProducto.equals("")) {
+					
+				}else {
+					listado=  mCarrito.findProductoDtobyMarca(listado, nombreMarca);
+				}
+				
+			
+			} catch (Exception e) {
+				JSFUtil.crearMensajeERROR(e.getMessage());
+				e.printStackTrace();
+
+			}
+		}
 	 
 	 
 		public void actionListenerActualizarProducto() {
@@ -157,6 +174,14 @@ public class BeanVenCarrito implements Serializable {
 
 	public void setNombreProducto(String nombreProducto) {
 		this.nombreProducto = nombreProducto;
+	}
+
+	public String getNombreMarca() {
+		return nombreMarca;
+	}
+
+	public void setNombreMarca(String nombreMarca) {
+		this.nombreMarca = nombreMarca;
 	}
 
 

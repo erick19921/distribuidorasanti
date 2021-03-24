@@ -17,14 +17,11 @@ public class VenCliente implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id_cliente")
-	private Integer idCliente;
+	@Column(name="cli_cedula")
+	private String cliCedula;
 
 	@Column(name="cli_apellido")
 	private String cliApellido;
-
-	@Column(name="cli_cedula")
-	private String cliCedula;
 
 	@Column(name="cli_direccion")
 	private String cliDireccion;
@@ -42,12 +39,12 @@ public class VenCliente implements Serializable {
 	public VenCliente() {
 	}
 
-	public Integer getIdCliente() {
-		return this.idCliente;
+	public String getCliCedula() {
+		return this.cliCedula;
 	}
 
-	public void setIdCliente(Integer idCliente) {
-		this.idCliente = idCliente;
+	public void setCliCedula(String cliCedula) {
+		this.cliCedula = cliCedula;
 	}
 
 	public String getCliApellido() {
@@ -56,14 +53,6 @@ public class VenCliente implements Serializable {
 
 	public void setCliApellido(String cliApellido) {
 		this.cliApellido = cliApellido;
-	}
-
-	public String getCliCedula() {
-		return this.cliCedula;
-	}
-
-	public void setCliCedula(String cliCedula) {
-		this.cliCedula = cliCedula;
 	}
 
 	public String getCliDireccion() {

@@ -56,7 +56,16 @@ private int stockResultadoEdicion=0;
 		}
 		return null;
 	}
-	
+	public List<ProductoDto> findProductoDtobyNombre(List<ProductoDto> listado, String nombreProducto) {
+		List<ProductoDto> listadoBusqueda = new ArrayList<ProductoDto>();
+		for (int i = 0; i < listado.size(); i++) {
+			if (nombreProducto.equals(listado.get(i).getProNombre())) {
+				posicion=i;
+				listadoBusqueda.add(listado.get(i));
+			}
+		}
+		return listadoBusqueda;
+	}
 	
 	
 	

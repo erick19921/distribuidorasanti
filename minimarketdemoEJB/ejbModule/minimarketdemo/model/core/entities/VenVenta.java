@@ -52,7 +52,7 @@ public class VenVenta implements Serializable {
 
 	//bi-directional many-to-one association to VenCliente
 	@ManyToOne
-	@JoinColumn(name="id_cliente")
+	@JoinColumn(name="cli_cedula")
 	private VenCliente venCliente;
 
 	public VenVenta() {

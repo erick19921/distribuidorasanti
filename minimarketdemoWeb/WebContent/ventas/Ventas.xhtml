@@ -38,7 +38,17 @@
 		</p:menubar>
 	</h:form>
 	<p:panel>
-		<h:form>
+	<h:form>
+			<div>
+				<div class="ui-inputgroup">
+					<p:inputText placeholder="Nombre Producto" value="#{beanVenCarrito.nombreProducto}" />
+					<p:commandButton icon="pi pi-search" styleClass="ui-button-warning"
+						actionListener="#{beanVenCarrito.actionListenerBuscarProducto()}"
+						update=":formEdicion1" />
+				</div>
+			</div>
+		</h:form>
+		<h:form id="formEdicion1">
 		<p:dataGrid value="#{beanVenCarrito.listado}" var="p">
 		<p:panel header="Producto">
 			<h:panelGrid columns="2">
@@ -53,7 +63,7 @@
 				<h:outputText value="Stock: " />
 				<h:outputText value="#{p.stock}" />
 		        <h:outputText value="Cantidad: " />
-				<p:inputText value="#{p.cantidadIngresada}"
+				<p:spinner value="#{p.cantidadIngresada}"
 					required="true" requiredMessage="Ingrese la cantidad" />
 				<p:commandButton value="Agregar" icon="pi pi-save" update="@form"
 					actionListener="#{beanVenCarrito.actionListenerAgregerProducto(p)}" />

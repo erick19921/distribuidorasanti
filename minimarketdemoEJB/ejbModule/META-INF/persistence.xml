@@ -6,6 +6,7 @@
 		<class>minimarketdemo.model.core.entities.InvDistribuidore</class>
 		<class>minimarketdemo.model.core.entities.InvMarca</class>
 		<class>minimarketdemo.model.core.entities.InvProducto</class>
+		<class>minimarketdemo.model.core.entities.RegRegistro</class>
 		<class>minimarketdemo.model.core.entities.SegAsignacion</class>
 		<class>minimarketdemo.model.core.entities.SegModulo</class>
 		<class>minimarketdemo.model.core.entities.SegUsuario</class>
@@ -16,6 +17,5 @@
 		<class>minimarketdemo.model.core.entities.VenCliente</class>
 		<class>minimarketdemo.model.core.entities.VenDetalleVenta</class>
 		<class>minimarketdemo.model.core.entities.VenVenta</class>
-		<class>minimarketdemo.model.core.entities.RegRegistro</class>
 	</persistence-unit>
 </persistence>

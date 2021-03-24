@@ -21,6 +21,7 @@ public class BeanVenClientes implements Serializable {
 	private VenCliente nuevoCliente;
 	private VenCliente edicionCliente;
 	private String cedula;
+	private int idCliente;
 	public BeanVenClientes() {
 		
 	}
@@ -64,11 +65,11 @@ public class BeanVenClientes implements Serializable {
 			e.printStackTrace();
 		}
 	}
-	public void actionListenerEliminarCliente(int idCliente) {
+	public void actionListenerEliminarCliente(String cedula) {
 		try {
-			managerVenClentes.eliminaCliente(idCliente);
+			managerVenClentes.eliminaCliente(cedula);
 			listaVenClientes = managerVenClentes.findAllVenClientes();
-			JSFUtil.crearMensajeINFO("Cliente"+ idCliente+"eliminado correctamente");
+			JSFUtil.crearMensajeINFO("Cliente: "+ cedula +"eliminado correctamente");
 		} catch (Exception e) {
 			// TODO: handle exception
 			JSFUtil.crearMensajeERROR(e.getMessage());
@@ -76,9 +77,12 @@ public class BeanVenClientes implements Serializable {
 		}
 	}
 	
-	public void actionListenerBuscarCLiente(int idCliente) {
+	public void actionListenerBuscarCLiente() {
 		try {
-			nuevoCliente = managerVenClentes.buscarClientebyID(idCliente);
+			System.out.println("cedula: "+cedula);
+			nuevoCliente = new VenCliente();
+			nuevoCliente = managerVenClentes.buscarClientebyCI(cedula);
+		    cedula="";
 			JSFUtil.crearMensajeINFO("Cliente encontrado");
 		} catch (Exception e) {
 			JSFUtil.crearMensajeERROR(e.getMessage());
@@ -134,6 +138,14 @@ public class BeanVenClientes implements Serializable {
 
 	public void setCedula(String cedula) {
 		this.cedula = cedula;
+	}
+
+	public int getIdCliente() {
+		return idCliente;
+	}
+
+	public void setIdCliente(int idCliente) {
+		this.idCliente = idCliente;
 	}
 
 	

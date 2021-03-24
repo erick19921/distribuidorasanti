@@ -37,7 +37,7 @@
 		</p:menubar>
 	</h:form>
 	<p:panel>
-			<h:form>
+			<h:form  id="formDatos">
 			<p:dataTable value="#{beanVenCarrito.carrito}" var="p"
 				paginator="true" rows="5">
 				<p:column headerText="Codigo " filterBy="#{p.codProducto}"
@@ -64,12 +64,44 @@
 				</p:column>
 				<p:column headerText="OPCIONES">
 
-					<p:commandButton icon="pi pi-pencil" title="editar" />
+				<p:commandButton icon="pi pi-pencil" title="editar"
+							    actionListener="#{beanVenCarrito.actionListenerSeleccionarProducto(p)}"
+								update=":formEdicion" oncomplete="PF('dlgEdicion').show();">
+							</p:commandButton>
+					
+					
+					<p:commandButton icon="pi pi-times-circle" title="eliminar"
+						styleClass="ui-button-danger" update="@form"
+						actionListener="#{beanVenCarrito.actionListenerEliminarCliente(p.codProducto)}">
+						<p:confirm header="Confirmación"
+							message="Desea borrar este producto?" icon="pi pi-info-circle" />
+					</p:commandButton>
 
 				</p:column>
 			</p:dataTable>
 		</h:form>
 	</p:panel>
+	<p:dialog header="Cambiar Cantidad" widgetVar="dlgEdicion"
+		modal="true">
+		<h:form id="formEdicion">
+			<p:messages>
+				<p:autoUpdate />
+			</p:messages>
+			<h:panelGrid columns="2">
+							<h:outputText value="Stock :" />
+							<h:outputText value="#{beanVenCarrito.editarproducto.stock}" />
+							<h:outputText value="Cantidad Actual: " />
+							<h:outputText value="#{beanVenCarrito.editarproducto.cantidad}" />
+							<h:outputText value="Cantidad Nueva :" />
+							<h:inputText  value="#{beanVenCarrito.cantidad}" required="true"
+								requiredMessage="Debe indicar la cantidad" />
+						
+							<p:commandButton value="Actualizar Producto"  icon="pi pi-save" 
+							actionListener="#{beanVenCarrito.actionListenerActualizarProducto()}" 
+					update=":@form,:formDatos">></p:commandButton>
+			</h:panelGrid>
+		</h:form>
+	</p:dialog>
 	<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"
 		responsive="true" width="350">
 		<p:commandButton value="No" type="button"

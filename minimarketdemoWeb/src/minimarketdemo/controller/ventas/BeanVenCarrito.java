@@ -20,7 +20,9 @@ public class BeanVenCarrito implements Serializable {
 	private ManagerVenCarrito mCarrito;
 	private List<ProductoDto> listado;
 	private List<ProductoDto> carrito;
-
+    private ProductoDto producto;
+    private ProductoDto editarproducto;
+    private int cantidad;
 
 	@PostConstruct
 	public void inicializar() {
@@ -46,7 +48,35 @@ public class BeanVenCarrito implements Serializable {
 
 		}
 	}
-
+	public void actionListenerEliminarCliente(int codProducto) {
+		try {
+			mCarrito.eliminarProducto(codProducto, listado, carrito);
+			JSFUtil.crearMensajeINFO("Producto: "+ codProducto +" eliminado correctamente");
+		} catch (Exception e) {
+			// TODO: handle exception
+			JSFUtil.crearMensajeERROR(e.getMessage());
+			e.printStackTrace();
+		}
+	}
+	 public void actionListenerSeleccionarProducto(ProductoDto producto) {
+			editarproducto=producto;
+			System.out.println("Producto  seleccionado:"+editarproducto.getCodProducto());
+		}
+		public void actionListenerActualizarProducto() {
+			try {
+				
+				
+				mCarrito.actualizarCantidad(cantidad, editarproducto.getCodProducto(), listado, carrito);
+				JSFUtil.crearMensajeINFO("Producto modificado correctamente");
+			} catch (Exception e) {
+				JSFUtil.crearMensajeERROR(e.getMessage());
+				e.printStackTrace();
+			}
+		}
+	
+	
+	
+	
 	public List<ProductoDto> getListado() {
 		return listado;
 	}
@@ -61,6 +91,30 @@ public class BeanVenCarrito implements Serializable {
 
 	public void setCarrito(List<ProductoDto> carrito) {
 		this.carrito = carrito;
+	}
+
+	public ProductoDto getProducto() {
+		return producto;
+	}
+
+	public void setProducto(ProductoDto producto) {
+		this.producto = producto;
+	}
+
+	public ProductoDto getEditarproducto() {
+		return editarproducto;
+	}
+
+	public void setEditarproducto(ProductoDto editarproducto) {
+		this.editarproducto = editarproducto;
+	}
+
+	public int getCantidad() {
+		return cantidad;
+	}
+
+	public void setCantidad(int cantidad) {
+		this.cantidad = cantidad;
 	}
 
 

@@ -64,7 +64,7 @@
 				<h:outputText value="#{p.stock}" />
 		        <h:outputText value="Cantidad: " />
 				<p:spinner value="#{p.cantidadIngresada}"
-					required="true" requiredMessage="Ingrese la cantidad" />
+					required="true" requiredMessage="Ingrese la cantidad" min="0"/>
 				<p:commandButton value="Agregar" icon="pi pi-save" update="@form"
 					actionListener="#{beanVenCarrito.actionListenerAgregerProducto(p)}" />
 			</h:panelGrid>

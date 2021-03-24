@@ -24,9 +24,7 @@ public class ManagerVenCarrito {
 	@EJB
 	ManagerDAO mDAO;
 private int posicion;
-private int cantidadSumatoria=0;
-private int cantidadResultadoEdicion=0;
-private int stockResultadoEdicion=0;
+
 	/**
 	 * Default constructor.
 	 */
@@ -56,6 +54,14 @@ private int stockResultadoEdicion=0;
 		}
 		return null;
 	}
+	public int findPosicionProductoDtobyCod(List<ProductoDto> listado, int codProducto) {
+		for (int i = 0; i < listado.size(); i++) {
+			if (codProducto == listado.get(i).getCodProducto()) {
+				return i;
+			}
+		}
+		return -1;
+	}
 	public List<ProductoDto> findProductoDtobyNombre(List<ProductoDto> listado, String nombreProducto) {
 		List<ProductoDto> listadoBusqueda = new ArrayList<ProductoDto>();
 		for (int i = 0; i < listado.size(); i++) {
@@ -82,39 +88,43 @@ private int stockResultadoEdicion=0;
     producto.setStock(stock+cantidad);
     }
     
-    public void actualizarCantidad(int cantidadeditado, int codProducto,List<ProductoDto> lista,List<ProductoDto> carrito) throws Exception{
+    public void actualizarCantidad(ProductoDto productoEditado,List<ProductoDto> lista,List<ProductoDto> carrito) throws Exception{
         int cantidad;
-      
-        ProductoDto producto=findProductoDtobyCod(carrito,codProducto);
-        cantidad=producto.getCantidad();
+       int cantidadSumatoria=0;
+         int cantidadResultadoEdicion=0;
+         int stockResultadoEdicion=0;
+         int cantidadeditado=productoEditado.getCantidadIngresada();
+         int posicionProductoEditado=findPosicionProductoDtobyCod(carrito, productoEditado.getCodProducto());
+        cantidad=productoEditado.getCantidad();
 
 
-        System.out.println( "Codigo Producto: "+producto.getCodProducto());
-        System.out.println( "Cantidad Producto: "+producto.getCantidad());
+        System.out.println( "Codigo Producto: "+productoEditado.getCodProducto());
+        System.out.println( "Cantidad Producto: "+productoEditado.getCantidad());
         System.out.println( "Cantidad ProductoE: "+cantidadeditado);
-    	cantidadSumatoria=(producto.getCantidad()-cantidadeditado);
+    	cantidadSumatoria=(productoEditado.getCantidad()-cantidadeditado);
         System.out.println( "Cantidad ProductoS: "+cantidadSumatoria);
         if(cantidadSumatoria<0){
-        	cantidadSumatoria=cantidadSumatoria*-1;
-            if(carrito.get(posicion).getStock()-cantidadSumatoria>=0) {
-            	carrito.get(posicion).setCantidad(cantidadeditado);
-            	carrito.get(posicion).setStock(carrito.get(posicion).getStock()-cantidadSumatoria);
-            cantidadResultadoEdicion=carrito.get(posicion).getCantidad();
-             stockResultadoEdicion=carrito.get(posicion).getStock();
+        	cantidadSumatoria=cantidadSumatoria;
+            if(cantidadSumatoria+productoEditado.getStock()>=0) {
+            	carrito.get(posicionProductoEditado).setCantidad(cantidadeditado);
+            	carrito.get(posicionProductoEditado).setStock(cantidadSumatoria+productoEditado.getStock());
+       
             }else {
             	throw new Exception("Error,No puedes comprar mas de lo que hay en stock.");
             }
         	
         	
         }else {
-        	carrito.get(posicion).setCantidad(cantidadeditado);
-        	carrito.get(posicion).setStock(cantidadSumatoria+(carrito.get(posicion).getStock()));
-        cantidadResultadoEdicion=carrito.get(posicion).getCantidad();
-         stockResultadoEdicion=carrito.get(posicion).getStock();
+        	carrito.get(posicionProductoEditado).setCantidad(cantidadeditado);
+        	carrito.get(posicionProductoEditado).setStock(cantidadSumatoria+(carrito.get(posicionProductoEditado).getStock()));
+
         }
-        producto=findProductoDtobyCod(lista, codProducto);
-        producto.setCantidad(cantidadResultadoEdicion);
-        producto.setStock(stockResultadoEdicion);
+
+        
+        productoEditado.setCantidadIngresada(0);
+        ProductoDto producto=findProductoDtobyCod(lista, productoEditado.getCodProducto());
+        producto.setStock(carrito.get(posicionProductoEditado).getStock());
+        producto.setCantidadIngresada(0);
         }
         
     
@@ -130,7 +140,7 @@ private int stockResultadoEdicion=0;
 	public List<ProductoDto> agregarProductoCarrito(List<ProductoDto> carrito, ProductoDto producto) throws Exception {
 		if (carrito == null){
 			carrito = new ArrayList<ProductoDto>();
-			if ((producto.getStock() - producto.getCantidadIngresada()) >= 0) {
+			if ((producto.getStock() - producto.getCantidadIngresada())>= 0) {
 				producto.setStock(producto.getStock() - producto.getCantidadIngresada());
 				producto.setCantidad(producto.getCantidadIngresada());
 				carrito.add(producto);

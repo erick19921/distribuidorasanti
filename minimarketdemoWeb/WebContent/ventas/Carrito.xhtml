@@ -123,8 +123,8 @@
 				<h:outputText value="Cantidad Actual: " />
 				<h:outputText value="#{beanVenCarrito.editarproducto.cantidad}" />
 				<h:outputText value="Cantidad Nueva :" />
-				<p:spinner value="#{beanVenCarrito.cantidad}" required="true"
-					requiredMessage="Debe indicar la cantidad" min="0" max="#{beanVenCarrito.editarproducto.stock}" />
+				<p:spinner value="#{beanVenCarrito.editarproducto.cantidadIngresada}" required="true"
+					requiredMessage="Debe indicar la cantidad" min="1" />
 
 				<p:commandButton value="Actualizar Producto" icon="pi pi-save"
 					actionListener="#{beanVenCarrito.actionListenerActualizarProducto()}"

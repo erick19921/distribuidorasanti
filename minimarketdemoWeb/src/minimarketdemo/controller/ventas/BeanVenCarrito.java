@@ -19,6 +19,7 @@ public class BeanVenCarrito implements Serializable {
 	@EJB
 	private ManagerVenCarrito mCarrito;
 	private List<ProductoDto> listado;
+	private List<ProductoDto> listadoRespaldo;
 	private List<ProductoDto> carrito;
     private ProductoDto producto;
     private ProductoDto editarproducto;
@@ -28,6 +29,7 @@ public class BeanVenCarrito implements Serializable {
 	@PostConstruct
 	public void inicializar() {
 		listado = mCarrito.generarDatosProductos();
+		listadoRespaldo=listado;
 	}
 
 	public String actionMenuCarrito() {
@@ -35,7 +37,7 @@ public class BeanVenCarrito implements Serializable {
 	}
 
 	public String actionMenuProductos() {
-		listado = mCarrito.generarDatosProductos();
+		listado =listadoRespaldo;
 		return "Ventas";
 	}
 
@@ -72,7 +74,7 @@ public class BeanVenCarrito implements Serializable {
 	 public void actionListenerBuscarProducto() {
 			try {
 				System.out.println("Nombre producto ingresado "+nombreProducto );
-				listado = mCarrito.generarDatosProductos();
+				listado =listadoRespaldo;
 				if(nombreProducto.equals("")) {
 					
 				}else {
@@ -93,9 +95,13 @@ public class BeanVenCarrito implements Serializable {
 		public void actionListenerActualizarProducto() {
 			try {
 				
-				
-				mCarrito.actualizarCantidad(cantidad, editarproducto.getCodProducto(), listado, carrito);
-				JSFUtil.crearMensajeINFO("Producto modificado correctamente");
+				if(editarproducto.getCantidadIngresada()==0) {
+					JSFUtil.crearMensajeERROR("Solo se ingresa cantidades mayores a 0");
+				}else {
+					mCarrito.actualizarCantidad(editarproducto, listado, carrito);
+					JSFUtil.crearMensajeINFO("Producto modificado correctamente");
+				}
+			
 			} catch (Exception e) {
 				JSFUtil.crearMensajeERROR(e.getMessage());
 				e.printStackTrace();

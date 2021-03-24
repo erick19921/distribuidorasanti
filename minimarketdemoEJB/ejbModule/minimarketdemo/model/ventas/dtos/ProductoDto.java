@@ -6,7 +6,8 @@ public class ProductoDto {
     private String marcaNombre;
     private double proPresio;
     private int stock;
-	
+    private int cantidad;
+    private int cantidadIngresada;
 	public ProductoDto(int codProducto, String proNombre, String marcaNombre, double proPresio, int stock) {
 		super();
 		this.codProducto = codProducto;
@@ -14,16 +15,8 @@ public class ProductoDto {
 		this.marcaNombre = marcaNombre;
 		this.proPresio = proPresio;
 		this.stock = stock;
-	}
-	
-	public String getMarcaNombre() {
-		return marcaNombre;
-	}
 
-	public void setMarcaNombre(String marcaNombre) {
-		this.marcaNombre = marcaNombre;
 	}
-
 	public int getCodProducto() {
 		return codProducto;
 	}
@@ -35,6 +28,12 @@ public class ProductoDto {
 	}
 	public void setProNombre(String proNombre) {
 		this.proNombre = proNombre;
+	}
+	public String getMarcaNombre() {
+		return marcaNombre;
+	}
+	public void setMarcaNombre(String marcaNombre) {
+		this.marcaNombre = marcaNombre;
 	}
 	public double getProPresio() {
 		return proPresio;
@@ -48,5 +47,18 @@ public class ProductoDto {
 	public void setStock(int stock) {
 		this.stock = stock;
 	}
-    
+	public int getCantidad() {
+		return cantidad;
+	}
+	public void setCantidad(int cantidad) {
+		this.cantidad = cantidad;
+	}
+	public int getCantidadIngresada() {
+		return cantidadIngresada;
+	}
+	public void setCantidadIngresada(int cantidadIngresada) {
+		this.cantidadIngresada = cantidadIngresada;
+	}
+	
+
 }

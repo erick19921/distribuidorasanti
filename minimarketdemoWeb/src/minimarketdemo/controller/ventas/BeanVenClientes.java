@@ -44,6 +44,7 @@ public class BeanVenClientes implements Serializable {
 			managerVenClentes.insertarClientes(nuevoCliente);
 			listaVenClientes = managerVenClentes.findAllVenClientes();
 			JSFUtil.crearMensajeINFO("Nuevo Cliente Creado"+nuevoCliente.getCliNombre());
+			
 		} catch (Exception e) {
 			// TODO: handle exception
 			JSFUtil.crearMensajeERROR(e.getMessage());
@@ -61,7 +62,6 @@ public class BeanVenClientes implements Serializable {
 			e.printStackTrace();
 		}
 	}
-	
 	public void actionListenerEliminarCliente(int idCliente) {
 		try {
 			managerVenClentes.eliminaCliente(idCliente);

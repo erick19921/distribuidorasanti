@@ -9,12 +9,12 @@
 		type="preRenderView"></f:event>
 </f:metadata>
 <h:head>
-	<title>Distribuidores Productos</title>
+	<title>Carrito de compra</title>
 </h:head>
 <body>
 <div align="center">
 <p:panel>
-	<p:staticMessage severity="info" summary="Lista de clientes registrados" style="width: 100%" />
+	<p:staticMessage severity="info" summary="Carrito de Compra" style="width: 100%" />
 		</p:panel>
 	</div>
 	<p:growl>
@@ -37,35 +37,35 @@
 		</p:menubar>
 	</h:form>
 	<p:panel>
-		<h:form>
-			<p:dataTable value="#{beanVenClientes.listaVenClientes}" var="c"
+			<h:form>
+			<p:dataTable value="#{beanVenCarrito.carrito}" var="p"
 				paginator="true" rows="5">
-				<p:column headerText="ID" filterBy="#{c.cliCedula}"
+				<p:column headerText="Codigo " filterBy="#{p.codProducto}"
 					filterMatchMode="contains">
-					<h:outputText value="#{c.cliCedula}" />
+					<h:outputText value="#{p.codProducto}" />
 				</p:column>
-				<p:column headerText="NOMBRE" filterBy="#{c.cliNombre}"
+				<p:column headerText="Nombre" filterBy="#{p.proNombre}"
 					filterMatchMode="contains">
-					<h:outputText value="#{c.cliNombre}" />
-					<b></b>
-					<h:outputText value="#{c.cliApellido}" />
+					<h:outputText value="#{p.proNombre}" />
 				</p:column>
-				<p:column headerText="DIRECCIÓN">
-					<h:outputText value="#{c.cliDireccion}" />
+				<p:column headerText="Marca" filterBy="#{p.marcaNombre}"
+					filterMatchMode="contains">
+					<h:outputText value="#{p.marcaNombre}" />
+
 				</p:column>
-				<p:column headerText="TELÉFONO">
-					<h:outputText value="#{c.cliTelefono}" />
+				<p:column headerText="Precio">
+					<h:outputText value="#{p.proPresio}" />
+				</p:column>
+				<p:column headerText="Stock">
+					<h:outputText value="#{p.stock}" />
+				</p:column>
+					<p:column headerText="Cantidad">
+					<h:outputText value="#{p.cantidad}" />
 				</p:column>
 				<p:column headerText="OPCIONES">
-					
-					<p:commandButton icon="pi pi-pencil" title="editar"
-						 action="#{beanVenClientes.actionSeleccionarEdicionCliente(c)}"/>
-					<p:commandButton icon="pi pi-times-circle" title="eliminar"
-						styleClass="ui-button-danger" update="@form"
-						actionListener="#{beanVenClientes.actionListenerEliminarCliente(c.idCliente)}">
-						<p:confirm header="Confirmación"
-							message="Desea borrar este Distribuidor" icon="pi pi-info-circle" />
-					</p:commandButton>
+
+					<p:commandButton icon="pi pi-pencil" title="editar" />
+
 				</p:column>
 			</p:dataTable>
 		</h:form>

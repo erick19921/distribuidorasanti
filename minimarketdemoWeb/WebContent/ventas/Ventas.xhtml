@@ -9,12 +9,13 @@
 		type="preRenderView"></f:event>
 </f:metadata>
 <h:head>
-	<title>Ventas de Productos </title>
+	<title>Ventas de Productos</title>
 </h:head>
 <body>
-<div align="center">
-<p:panel>
-	<p:staticMessage severity="info" summary="Lista de productos " style="width: 100%" />
+	<div align="center">
+		<p:panel>
+			<p:staticMessage severity="info" summary="Lista de productos "
+				style="width: 100%" />
 		</p:panel>
 	</div>
 	<p:growl>
@@ -22,7 +23,10 @@
 	</p:growl>
 	<h:form>
 		<p:menubar>
-			<p:menuitem value="Regresar" icon="pi pi-home" action="menu" />
+		<p:menuitem value="Regresar" icon="pi pi-home" action="/menu" />
+			<p:menuitem value="Clientes" icon="pi pi-users" action="#{beanVenClientes.actionMenuCliente()}"/>
+			<p:menuitem value="Ventas" icon="pi pi-plus-circle" action="#{beanVenCarrito.actionMenuProductos()}" />
+			<p:menuitem value="Carrito de Compra" icon="pi pi-plus-circle" action="#{beanVenCarrito.actionMenuCarrito()}" />
 			<f:facet name="options">
 				<p:menuButton value="#{beanSegLogin.loginDTO.correo}"
 					icon="pi pi-user">
@@ -33,31 +37,33 @@
 			</f:facet>
 		</p:menubar>
 	</h:form>
-	<p:panel header="Producto">
-	<p:dataGrid value="#{controllerCarrito.listado}" var="p">
-	<p:panel header="Producto">
-	<h:panelGrid columns="2">
-	        <h:outputText value="Codigo: " />
-	        <h:outputText value="#{p.codProducto}" />
-	        <h:outputText value="Nombre: " />
-            <h:outputText value="#{p.proNombre}" />
-            <h:outputText value="Marca: " />
-			<h:outputText value="#{p.marcaNombre}" />
-			<h:outputText value="Precio: " />
-			<h:outputText value="#{p.proPresio}" />
-			<h:outputText value="Stock: " />
-			<h:outputText value="#{p.stock}" />
-			
-	</h:panelGrid>
-	</p:panel>
+	<p:panel>
+		<h:form>
+		<p:dataGrid value="#{beanVenCarrito.listado}" var="p">
+		<p:panel header="Producto">
+			<h:panelGrid columns="2">
+				<h:outputText value="Codigo: " />
+				<h:outputText value="#{p.codProducto}" />
+				<h:outputText value="Nombre: " />
+				<h:outputText value="#{p.proNombre}" />
+				<h:outputText value="Marca: " />
+				<h:outputText value="#{p.marcaNombre}" />
+				<h:outputText value="Precio: " />
+				<h:outputText value="#{p.proPresio}" />
+				<h:outputText value="Stock: " />
+				<h:outputText value="#{p.stock}" />
+		        <h:outputText value="Cantidad: " />
+				<p:inputText value="#{p.cantidadIngresada}"
+					required="true" requiredMessage="Ingrese la cantidad" />
+				<p:commandButton value="Agregar" icon="pi pi-save" update="@form"
+					actionListener="#{beanVenCarrito.actionListenerAgregerProducto(p)}" />
+			</h:panelGrid>
+		</p:panel>
 	</p:dataGrid>
+		</h:form>
 	</p:panel>
-	<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"
-		responsive="true" width="350">
-		<p:commandButton value="No" type="button"
-			styleClass="ui-confirmdialog-no ui-button-flat" />
-		<p:commandButton value="Sí" type="button"
-			styleClass="ui-confirmdialog-yes" />
-	</p:confirmDialog>
+	
+	
+
 </body>
 </html>

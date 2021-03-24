@@ -47,4 +47,15 @@ public class ManagerVenClientes {
     public void eliminaCliente(int idCliente) throws Exception{
     	mDAO.eliminar(VenCliente.class, idCliente);
     }
+    
+    public VenCliente buscarClientebyCI(String cedula) throws Exception{
+    	VenCliente busqCli = (VenCliente) mDAO.findById(VenCliente.class, cedula);
+    	return busqCli;
+    }
+    
+    public VenCliente buscarClientebyID(int idCliente) throws Exception{
+    	VenCliente busqCli = (VenCliente) mDAO.findById(VenCliente.class, idCliente);
+    	return busqCli;
+    }
+     
 }

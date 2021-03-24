@@ -12,9 +12,10 @@
 	<title>Carrito de compra</title>
 </h:head>
 <body>
-<div align="center">
-<p:panel>
-	<p:staticMessage severity="info" summary="Carrito de Compra" style="width: 100%" />
+	<div align="center">
+		<p:panel>
+			<p:staticMessage severity="info" summary="Carrito de Compra"
+				style="width: 100%" />
 		</p:panel>
 	</div>
 	<p:growl>
@@ -23,9 +24,12 @@
 	<h:form>
 		<p:menubar>
 			<p:menuitem value="Regresar" icon="pi pi-home" action="/menu" />
-			<p:menuitem value="Clientes" icon="pi pi-users" action="#{beanVenClientes.actionMenuCliente()}"/>
-			<p:menuitem value="Ventas" icon="pi pi-plus-circle" action="#{beanVenCarrito.actionMenuProductos()}" />
-			<p:menuitem value="Carrito de Compra" icon="pi pi-plus-circle" action="#{beanVenCarrito.actionMenuCarrito()}" />
+			<p:menuitem value="Clientes" icon="pi pi-users"
+				action="#{beanVenClientes.actionMenuCliente()}" />
+			<p:menuitem value="Ventas" icon="pi pi-plus-circle"
+				action="#{beanVenCarrito.actionMenuProductos()}" />
+			<p:menuitem value="Carrito de Compra" icon="pi pi-plus-circle"
+				action="#{beanVenCarrito.actionMenuCarrito()}" />
 			<f:facet name="options">
 				<p:menuButton value="#{beanSegLogin.loginDTO.correo}"
 					icon="pi pi-user">
@@ -37,7 +41,34 @@
 		</p:menubar>
 	</h:form>
 	<p:panel>
-			<h:form  id="formDatos">
+		<h:form>
+			<div>
+				<div class="ui-inputgroup">
+					<p:inputText placeholder="Cedula" value="cedula" />
+					<p:commandButton icon="pi pi-search" styleClass="ui-button-warning"
+						actionListener="#{beanVenClientes.actionListenerBuscarCLiente(cedula)}"
+						update=":clienteForm" />
+				</div>
+			</div>
+		</h:form>
+		<h:form id="clienteForm">
+			<div>
+				<p:panelGrid columns="2">
+					<h:outputText value="Cedula" />
+					<h:outputText value="#{beanVenClientes.nuevoCliente.cliCedula}" />
+					<h:outputText value="Nombre" />
+					<h:outputText value="#{beanVenClientes.nuevoCliente.cliNombre}" />
+					<h:outputText value="Apellidos" />
+					<h:outputText value="#{beanVenClientes.nuevoCliente.cliApellido}" />
+					<h:outputText value="Direccion" />
+					<h:outputText value="#{beanVenClientes.nuevoCliente.cliDireccion}" />
+					<h:outputText value="Telefono" />
+					<h:outputText value="#{beanVenClientes.nuevoCliente.cliTelefono}" />
+				</p:panelGrid>
+
+			</div>
+		</h:form>
+		<h:form id="formDatos">
 			<p:dataTable value="#{beanVenCarrito.carrito}" var="p"
 				paginator="true" rows="5">
 				<p:column headerText="Codigo " filterBy="#{p.codProducto}"
@@ -59,17 +90,17 @@
 				<p:column headerText="Stock">
 					<h:outputText value="#{p.stock}" />
 				</p:column>
-					<p:column headerText="Cantidad">
+				<p:column headerText="Cantidad">
 					<h:outputText value="#{p.cantidad}" />
 				</p:column>
 				<p:column headerText="OPCIONES">
 
-				<p:commandButton icon="pi pi-pencil" title="editar"
-							    actionListener="#{beanVenCarrito.actionListenerSeleccionarProducto(p)}"
-								update=":formEdicion" oncomplete="PF('dlgEdicion').show();">
-							</p:commandButton>
-					
-					
+					<p:commandButton icon="pi pi-pencil" title="editar"
+						actionListener="#{beanVenCarrito.actionListenerSeleccionarProducto(p)}"
+						update=":formEdicion" oncomplete="PF('dlgEdicion').show();">
+					</p:commandButton>
+
+
 					<p:commandButton icon="pi pi-times-circle" title="eliminar"
 						styleClass="ui-button-danger" update="@form"
 						actionListener="#{beanVenCarrito.actionListenerEliminarCliente(p.codProducto)}">
@@ -81,23 +112,22 @@
 			</p:dataTable>
 		</h:form>
 	</p:panel>
-	<p:dialog header="Cambiar Cantidad" widgetVar="dlgEdicion"
-		modal="true">
+	<p:dialog header="Cambiar Cantidad" widgetVar="dlgEdicion" modal="true">
 		<h:form id="formEdicion">
 			<p:messages>
 				<p:autoUpdate />
 			</p:messages>
 			<h:panelGrid columns="2">
-							<h:outputText value="Stock :" />
-							<h:outputText value="#{beanVenCarrito.editarproducto.stock}" />
-							<h:outputText value="Cantidad Actual: " />
-							<h:outputText value="#{beanVenCarrito.editarproducto.cantidad}" />
-							<h:outputText value="Cantidad Nueva :" />
-							<h:inputText  value="#{beanVenCarrito.cantidad}" required="true"
-								requiredMessage="Debe indicar la cantidad" />
-						
-							<p:commandButton value="Actualizar Producto"  icon="pi pi-save" 
-							actionListener="#{beanVenCarrito.actionListenerActualizarProducto()}" 
+				<h:outputText value="Stock :" />
+				<h:outputText value="#{beanVenCarrito.editarproducto.stock}" />
+				<h:outputText value="Cantidad Actual: " />
+				<h:outputText value="#{beanVenCarrito.editarproducto.cantidad}" />
+				<h:outputText value="Cantidad Nueva :" />
+				<h:inputText value="#{beanVenCarrito.cantidad}" required="true"
+					requiredMessage="Debe indicar la cantidad" />
+
+				<p:commandButton value="Actualizar Producto" icon="pi pi-save"
+					actionListener="#{beanVenCarrito.actionListenerActualizarProducto()}"
 					update=":@form,:formDatos">></p:commandButton>
 			</h:panelGrid>
 		</h:form>

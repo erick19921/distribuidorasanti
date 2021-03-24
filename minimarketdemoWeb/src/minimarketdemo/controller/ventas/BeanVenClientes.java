@@ -17,8 +17,10 @@ public class BeanVenClientes implements Serializable {
   @EJB
   private ManagerVenClientes managerVenClentes;
 	private List<VenCliente> listaVenClientes;
+	private List<VenCliente> clientes;
 	private VenCliente nuevoCliente;
 	private VenCliente edicionCliente;
+	private String cedula;
 	public BeanVenClientes() {
 		
 	}
@@ -74,6 +76,28 @@ public class BeanVenClientes implements Serializable {
 		}
 	}
 	
+	public void actionListenerBuscarCLiente(int idCliente) {
+		try {
+			nuevoCliente = managerVenClentes.buscarClientebyID(idCliente);
+			JSFUtil.crearMensajeINFO("Cliente encontrado");
+		} catch (Exception e) {
+			JSFUtil.crearMensajeERROR(e.getMessage());
+			e.printStackTrace();
+		}
+	}
+	
+	/*
+	public void actionListenerBuscarCLiente(String cedula) {
+		try {
+			nuevoCliente = managerVenClentes.buscarClientebyCI(cedula);
+			JSFUtil.crearMensajeINFO("Cliente encontrado");
+		} catch (Exception e) {
+			// TODO: handle exception
+			JSFUtil.crearMensajeERROR(e.getMessage());
+			e.printStackTrace();
+		}
+	}*/
+	
 	
 	
 	///Metodos acesores
@@ -96,4 +120,21 @@ public class BeanVenClientes implements Serializable {
 		this.edicionCliente = edicionCliente;
 	}
 
+	public List<VenCliente> getClientes() {
+		return clientes;
+	}
+
+	public void setClientes(List<VenCliente> clientes) {
+		this.clientes = clientes;
+	}
+
+	public String getCedula() {
+		return cedula;
+	}
+
+	public void setCedula(String cedula) {
+		this.cedula = cedula;
+	}
+
+	
 }

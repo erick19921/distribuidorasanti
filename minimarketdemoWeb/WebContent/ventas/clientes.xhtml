@@ -38,6 +38,11 @@
 	</h:form>
 	<p:panel>
 		<h:form>
+		<p:menubar>
+		
+			<p:menuitem value="Nuevo Ciente" icon="pi pi-plus-circle" action="#{beanVenClientes.actionMenuNuevoCliente()}" styleClass="ui-button-success" />
+			
+		</p:menubar>
 			<p:dataTable value="#{beanVenClientes.listaVenClientes}" var="c"
 				paginator="true" rows="5">
 				<p:column headerText="ID" filterBy="#{c.cliCedula}"
@@ -62,7 +67,7 @@
 						 action="#{beanVenClientes.actionSeleccionarEdicionCliente(c)}"/>
 					<p:commandButton icon="pi pi-times-circle" title="eliminar"
 						styleClass="ui-button-danger" update="@form"
-						actionListener="#{beanVenClientes.actionListenerEliminarCliente(c.idCliente)}">
+						actionListener="#{beanVenClientes.actionListenerEliminarCliente(c.cliCedula)}">
 						<p:confirm header="Confirmación"
 							message="Desea borrar este Distribuidor" icon="pi pi-info-circle" />
 					</p:commandButton>

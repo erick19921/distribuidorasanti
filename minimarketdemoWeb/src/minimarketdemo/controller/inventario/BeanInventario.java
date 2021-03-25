@@ -66,6 +66,8 @@ public class BeanInventario implements Serializable {
 	
 	public String actionSeleccionarEdicionProducto(InvProducto producto) {
 		edicionProducto=producto;
+		listaMarcas=mMarca.findAllMarca();
+		listaDistribuidor=mDistribuidor.findAllDistribuidores();
 		return "producto_edicion";
 	}
 	

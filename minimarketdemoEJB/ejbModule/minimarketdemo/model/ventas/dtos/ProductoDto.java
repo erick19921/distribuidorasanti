@@ -5,6 +5,7 @@ public class ProductoDto {
     private String proNombre;
     private String marcaNombre;
     private double proPresio;
+    private double PresioTotal;
     private int stock;
     private int cantidad;
     private int cantidadIngresada;
@@ -58,6 +59,12 @@ public class ProductoDto {
 	}
 	public void setCantidadIngresada(int cantidadIngresada) {
 		this.cantidadIngresada = cantidadIngresada;
+	}
+	public double getPresioTotal() {
+		return PresioTotal;
+	}
+	public void setPresioTotal(double presioTotal) {
+		PresioTotal = presioTotal;
 	}
 	
 
